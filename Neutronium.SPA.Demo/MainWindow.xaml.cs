@@ -14,7 +14,7 @@ namespace Neutronium.SPA.Demo
         {
             InitializeComponent();
             var window = new WindowViewModel(this);
-            DataContext = new MainViewModel(window);
+            DataContext = new ApplicationViewModel(window);
         }
 
         protected override void OnClosed(EventArgs e)

@@ -1,6 +1,6 @@
 <<template>
     <v-footer :fixed="fixed" app>
-        <span>&copy; 2017</span>
+        <span>&copy; {{year}}</span>
     </v-footer>
 </template>
 
@@ -9,7 +9,11 @@ const props ={
     fixed:{
       type: Boolean,
       default: false
-    }
+    },
+	year:{
+      type: Number,
+      required: false
+	}
 }
 
 export default {

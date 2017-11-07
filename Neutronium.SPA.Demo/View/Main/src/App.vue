@@ -4,13 +4,13 @@
     <side-menu v-model="drawer" :items="items" :mini="miniVariant">
     </side-menu>
 
-    <top-menu v-model="drawer" :title="viewModel.ApplicationName" :window="viewModel.Window" :mini="miniVariant" @changedMini="changeMini" >
+    <top-menu v-model="drawer" :title="viewModel.ApplicationInformation.Name" :window="viewModel.Window" :mini="miniVariant" @changedMini="changeMini" >
     </top-menu>
     
      <main-application>
      </main-application>
 
-    <application-footer>
+    <application-footer :year="viewModel.ApplicationInformation.Year">
     </application-footer>
 
   </v-app>
