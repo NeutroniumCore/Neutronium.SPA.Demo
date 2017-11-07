@@ -3697,6 +3697,11 @@
         }
       }
     },
+    "vue-router": {
+      "version": "3.0.1",
+      "from": "vue-router@latest",
+      "resolved": "https://registry.npmjs.org/vue-router/-/vue-router-3.0.1.tgz"
+    },
     "vue-style-loader": {
       "version": "3.0.3",
       "from": "vue-style-loader@>=3.0.3 <4.0.0",
