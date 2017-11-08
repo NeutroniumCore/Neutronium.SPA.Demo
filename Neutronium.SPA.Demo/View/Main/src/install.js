@@ -3,7 +3,7 @@ import 'material-design-icons/iconfont/material-icons.css'
 import 'font-awesome/css/font-awesome.css'
 
 import Vue_Router from 'vue-router'
-import router from './route'
+import {router} from './route'
 import {
     Vuetify,
     VApp,

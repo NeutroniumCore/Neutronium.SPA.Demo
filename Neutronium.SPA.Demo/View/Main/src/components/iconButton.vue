@@ -1,5 +1,5 @@
 <<template>
-    <v-btn icon @click.stop="execute">
+    <v-btn small icon @click.stop="execute">
         <v-icon>{{icon}}</v-icon>
     </v-btn>
 </template>

@@ -1,14 +1,15 @@
 <template>
   <v-app dark>
 
-    <side-menu v-model="drawer" :items="items" :mini="miniVariant">
+    <side-menu v-model="drawer" :items="menu">
     </side-menu>
 
-    <top-menu v-model="drawer" :title="viewModel.ApplicationInformation.Name" :window="viewModel.Window" :mini="miniVariant" @changedMini="changeMini" >
+    <top-menu v-model="drawer" :title="viewModel.ApplicationInformation.Name" :window="viewModel.Window">
     </top-menu>
     
-     <main-application>
-     </main-application>
+    <transition mode="out-in">
+      <router-view></router-view>
+    </transition>
 
     <application-footer :year="viewModel.ApplicationInformation.Year">
     </application-footer>
@@ -19,9 +20,10 @@
 <script>
 
 import sideMenu from './components/sideMenu'
-import mainApplication from './components/mainApp'
 import applicationFooter from './components/applicationFooter'
 import topMenu from './components/topMenu'
+
+import {menu} from './route'
 
 const props={
   viewModel: Object,
@@ -31,26 +33,17 @@ const props={
 export default {
   components:{
       sideMenu,
-      mainApplication,
       applicationFooter,
       topMenu
   },
   name: 'app',
   props,
-  methods:{
-    changeMini(value) {
-      this.miniVariant = value
-    }
-  },
   data () {
     return {
       clipped: false,
       drawer: false,
       fixed: false,
-      items: [
-        { icon: 'bubble_chart', title: 'Inspire' }
-      ],
-      miniVariant: false,
+      menu
     }
   }
 }

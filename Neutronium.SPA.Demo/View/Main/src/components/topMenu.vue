@@ -2,10 +2,6 @@
     <v-toolbar id="top-menu" fixed app>
 
         <v-toolbar-side-icon @click.stop="toggleMenu"></v-toolbar-side-icon>
-        
-        <v-btn icon @click.stop="changeMini" v-show="value">
-            <v-icon v-html="mini ? 'chevron_right' : 'chevron_left'"></v-icon>
-        </v-btn>
 
         <v-toolbar-title v-text="title"></v-toolbar-title>
 
@@ -35,10 +31,6 @@ const props = {
       type: String,
       required: false
     },
-    mini:{
-      type: Boolean,
-      default: false
-    },
     window:{
       type: Object,
       required: true
@@ -55,9 +47,6 @@ export default {
     methods:{
         toggleMenu(){
             this.$emit('input', !this.value)
-        },
-        changeMini() {
-            this.$emit('changedMini', !this.mini)
         }
     }
 }

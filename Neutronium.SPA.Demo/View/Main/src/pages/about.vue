@@ -1,5 +1,9 @@
 <template>
-  
+    <main>
+    <v-content>
+    About
+    </v-content>
+    </main>
 </template>
 
 <script>
