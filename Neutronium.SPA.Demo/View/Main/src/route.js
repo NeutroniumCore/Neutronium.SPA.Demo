@@ -1,6 +1,7 @@
 import Router from 'vue-router'
 import main from './pages/main.vue'
 import about from './pages/about.vue'
+import toPromise from 'neutronium-vue-resultcommand-topromise'
 
 function route (component, path, name, icon, children) {
     return {
@@ -35,8 +36,34 @@ const menu = allRoutes.map(r => ({
 }))
 
 router.beforeEach((to, from, next) => {
-    router.app.
-    next()
+    const app = router.app
+    if (!app){
+        next()
+        return;
+    }
+
+    const viewModel = app.ViewModel
+    if (!viewModel){
+        next()
+        return;
+    }
+
+    const navigator = viewModel.NavigateCommand;
+    if (!navigator){
+        next();
+        return;
+    }
+
+    const promise = toPromise(navigator)(to.name);
+    promise.then((ok)=>{
+        if (ok) {
+            next()
+        } else {
+            next(false);
+        }
+    }, (error) =>{
+        next(error)
+    })
 })
 
 export {
