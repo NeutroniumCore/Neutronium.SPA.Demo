@@ -17,7 +17,7 @@ function route (component, path, name, icon, children) {
 
 const allRoutes = [
     route(main,'/main', 'main', 'view_list'),
-    route(about, '/about', 'about', 'bubble_chart')
+    route(about, '/about', 'about', 'info')
 ]
 
 const routes = [...allRoutes, { path: '/', redirect: '/main' }]
@@ -35,6 +35,7 @@ const menu = allRoutes.map(r => ({
 }))
 
 router.beforeEach((to, from, next) => {
+    router.app.
     next()
 })
 
