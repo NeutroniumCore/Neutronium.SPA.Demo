@@ -1,7 +1,7 @@
 import Router from 'vue-router'
 import main from './pages/main.vue'
 import about from './pages/about.vue'
-import toPromise from 'neutronium-vue-resultcommand-topromise'
+import {toPromise} from 'neutronium-vue-resultcommand-topromise'
 
 function route (component, path, name, icon, children) {
     return {
@@ -35,26 +35,34 @@ const menu = allRoutes.map(r => ({
     icon: r.meta.icon
 }))
 
-router.beforeEach((to, from, next) => {
+function getRouterViewModel(router){
     const app = router.app
     if (!app){
-        next()
-        return;
+        return null;
     }
 
     const viewModel = app.ViewModel
     if (!viewModel){
-        next()
+        return null;
+    }
+
+    return viewModel.Router;
+}
+
+router.beforeEach((to, from, next) => {
+    const routerViewModel = getRouterViewModel(router);
+    if (!routerViewModel){
+        next();
         return;
     }
 
-    const navigator = viewModel.NavigateCommand;
+    const navigator = routerViewModel.BeforeResolveCommand;
     if (!navigator){
         next();
         return;
     }
 
-    const promise = toPromise(navigator)(to.name);
+    const promise = toPromise(navigator, to.name);
     promise.then((ok)=>{
         if (ok) {
             next()
@@ -64,6 +72,19 @@ router.beforeEach((to, from, next) => {
     }, (error) =>{
         next(error)
     })
+})
+
+router.afterEach((to, from, next) => {
+    const routerViewModel = getRouterViewModel(router);
+    if (!routerViewModel){
+        return;
+    }
+
+    const navigator = routerViewModel.AfterResolveCommand;
+    if (!navigator){
+        return;
+    }
+    navigator.Execute(to.name);
 })
 
 export {

@@ -45,6 +45,12 @@ export default {
       fixed: false,
       menu
     }
+  },
+  watch:{
+    'viewModel.Router.Route': function(name){
+      console.log(name);
+      this.$router.push({name});
+    }
   }
 }
 </script>

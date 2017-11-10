@@ -66,6 +66,14 @@
     <Reference Include="ChromiumWebBrowser, Version=3.2924.0.0, Culture=neutral, processorArchitecture=x86">
       <HintPath>..\packages\Unofficial.Chromiumfx.3.2924.3\lib\ChromiumWebBrowser.dll</HintPath>
     </Reference>
+    <Reference Include="CommonServiceLocator.NinjectAdapter.Unofficial, Version=3.2.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.NinjectAdapter.Unofficial.3.2.2.0\lib\Net40\CommonServiceLocator.NinjectAdapter.Unofficial.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Windows7APICodePack-Core.1.1.0.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
     </Reference>
@@ -89,6 +97,10 @@
     </Reference>
     <Reference Include="Neutronium.WPF, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <HintPath>..\packages\Neutronium.WPF.1.0.0\lib\Neutronium.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -134,6 +146,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Application\Ioc\TrivialServiceLocator.cs" />
+    <Compile Include="Application\Navigation\RouteContext.cs" />
+    <Compile Include="Application\Navigation\IRouterBuilder.cs" />
+    <Compile Include="Application\Navigation\IRouterSolver.cs" />
+    <Compile Include="Application\Navigation\NavigationContext.cs" />
+    <Compile Include="Application\Navigation\NavigationViewModel.cs" />
+    <Compile Include="Application\Navigation\Navigator.cs" />
+    <Compile Include="Application\Navigation\Router.cs" />
+    <Compile Include="App_Start\DependencyInjcetionConfiguration.cs" />
+    <Compile Include="Application\Navigation\INavigator.cs" />
+    <Compile Include="App_Start\RoutingConfiguration.cs" />
     <Compile Include="ViewModel\ApplicationInformation.cs" />
     <Compile Include="ViewModel\ApplicationViewModel.cs" />
     <Compile Include="App.xaml.cs">
