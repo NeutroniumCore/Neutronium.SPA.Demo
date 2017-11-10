@@ -1,6 +1,6 @@
 <template>
-    <v-btn small icon @click.stop="execute">
-        <v-icon>{{icon}}</v-icon>
+    <v-btn :color="color" :disabled="!canExecute"  @click.stop="execute">
+        {{text}}
     </v-btn>
 </template>
 
@@ -8,9 +8,13 @@
 import mixin from 'neutronium-vue-simple-command-mixin'
 
 const props = {
-    icon:{
+    text:{
         type: String,
         required: true
+    },
+    color:{
+        type: String,
+        default: 'primary'      
     }
 }
 

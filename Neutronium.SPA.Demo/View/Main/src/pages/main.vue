@@ -15,14 +15,27 @@
               </blockquote>
             </v-layout>
           </v-slide-y-transition>
+
+        <text-button :command="viewModel.GoToAbout" text="Go To About section">
+        <text-button>
+
         </v-container>
       </v-content>
     </main>
 </template>
 
 <script>
+import textButton from '../components/textButton'
+
+const props={
+  viewModel: Object,
+}
+
 export default {
-  
+  components:{
+    textButton
+  },
+  props
 }
 </script>
 

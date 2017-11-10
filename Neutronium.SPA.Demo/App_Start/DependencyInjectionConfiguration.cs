@@ -1,15 +1,16 @@
-﻿using CommonServiceLocator.NinjectAdapter.Unofficial;
+﻿using System.Reflection;
+using CommonServiceLocator.NinjectAdapter.Unofficial;
 using Microsoft.Practices.ServiceLocation;
 using Neutronium.SPA.Demo.Application.Navigation;
 using Ninject;
 
-namespace Neutronium.SPA.Demo
+namespace Neutronium.SPA.Demo 
 {
-    public class DependencyInjcetionConfiguration
+    public class DependencyInjectionConfiguration
     {
         public static IServiceLocator Register(INavigator navigator)
         {
-            IKernel kernel = new StandardKernel();
+            var kernel = new StandardKernel(new NinjectSettings { UseReflectionBasedInjection = true });
             RegisterDependency(kernel, navigator);
             return new NinjectServiceLocator(kernel);
         }

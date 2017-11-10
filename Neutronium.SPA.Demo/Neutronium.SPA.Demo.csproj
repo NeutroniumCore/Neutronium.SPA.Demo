@@ -45,6 +45,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -142,6 +143,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\Menu\AboutModel.cs" />
+    <Compile Include="ViewModel\Menu\MainViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -152,9 +155,8 @@
     <Compile Include="Application\Navigation\IRouterSolver.cs" />
     <Compile Include="Application\Navigation\NavigationContext.cs" />
     <Compile Include="Application\Navigation\NavigationViewModel.cs" />
-    <Compile Include="Application\Navigation\Navigator.cs" />
     <Compile Include="Application\Navigation\Router.cs" />
-    <Compile Include="App_Start\DependencyInjcetionConfiguration.cs" />
+    <Compile Include="App_Start\DependencyInjectionConfiguration.cs" />
     <Compile Include="Application\Navigation\INavigator.cs" />
     <Compile Include="App_Start\RoutingConfiguration.cs" />
     <Compile Include="ViewModel\ApplicationInformation.cs" />
@@ -198,10 +200,10 @@
     <None Include="View\Main\data\vm.cjson" />
     <None Include="View\Main\src\components\applicationFooter.vue" />
     <None Include="View\Main\src\components\iconButton.vue" />
-    <None Include="View\Main\src\components\mainApp.vue" />
     <None Include="View\Main\src\components\sideMenu.vue" />
     <None Include="View\Main\src\components\topMenu.vue" />
     <None Include="View\Main\src\pages\about.vue" />
+    <None Include="View\Main\src\pages\main.vue" />
     <None Include="View\Main\src\stylus\main.styl" />
     <None Include="View\Main\src\stylus\theme.styl" />
     <Resource Include="View\Main\dist\styles.css.map" />

@@ -20,7 +20,7 @@ namespace Neutronium.SPA.Demo.Application.Navigation
             return this;
         }
 
-        public IRouterBuilder Register<T>(string path, string routerName, bool defaultType = true)
+        public IRouterBuilder Register<T>(string routerName, bool defaultType = true)
         {
             return Register(typeof(T), routerName, defaultType);
         }

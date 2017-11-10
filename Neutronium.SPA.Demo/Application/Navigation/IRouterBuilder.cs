@@ -25,9 +25,6 @@ namespace Neutronium.SPA.Demo.Application.Navigation
         /// <summary>
         /// Register a file relative path to HTML file corresponding to a viewmodel type 
         /// </summary>
-        /// <param name="path">
-        /// relative file path to HTML file
-        /// </param>
         /// <typeparam name="T">
         /// Type of view model to register
         /// </typeparam>
@@ -41,6 +38,6 @@ namespace Neutronium.SPA.Demo.Application.Navigation
         /// <returns>
         /// the navigation builder instance
         /// </returns>
-        IRouterBuilder Register<T>(string path, string routerName, bool defaultType = true);
+        IRouterBuilder Register<T>(string routerName, bool defaultType = true);
     }
 }

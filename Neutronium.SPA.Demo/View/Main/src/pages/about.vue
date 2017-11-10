@@ -22,8 +22,12 @@
 </template>
 
 <script>
+const props={
+  viewModel: Object,
+}
+
 export default {
-  
+  props
 }
 </script>
 

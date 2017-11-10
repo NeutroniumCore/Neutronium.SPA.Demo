@@ -8,7 +8,7 @@
     </top-menu>
     
     <transition mode="out-in">
-      <router-view></router-view>
+      <router-view :viewModel="viewModel.CurrentViewModel"></router-view>
     </transition>
 
     <application-footer :year="viewModel.ApplicationInformation.Year">
