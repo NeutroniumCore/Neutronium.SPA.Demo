@@ -1,4 +1,6 @@
-﻿using Neutronium.SPA.Demo.Application.Navigation;
+﻿using Neutronium.Core.Navigation.Routing;
+using Neutronium.SPA.Demo.Application.Navigation;
+using Neutronium.SPA.Demo.ViewModel;
 using Neutronium.SPA.Demo.ViewModel.Menu;
 
 namespace Neutronium.SPA.Demo
@@ -14,8 +16,10 @@ namespace Neutronium.SPA.Demo
 
         private static void BuildRoutes(IRouterBuilder routeBuilder) 
         {
-            routeBuilder.Register<MainViewModel>("main");
-            routeBuilder.Register<AboutViewModel>("about");
+            var convention = routeBuilder.GetTemplateConvention("{vm}");
+            typeof(RoutingConfiguration).GetTypesFromSameAssembly()
+                .InNamespace("Neutronium.SPA.Demo.ViewModel.Menu")
+                .Register(convention);
         }
     }
 }

@@ -10,13 +10,13 @@ namespace Neutronium.SPA.Demo
         public static IServiceLocator Register(INavigator navigator)
         {
             var kernel = new StandardKernel(new NinjectSettings { UseReflectionBasedInjection = true });
-            RegisterDependency(kernel, navigator);
+            kernel.Bind<INavigator>().ToConstant(navigator);
+            RegisterDependency(kernel);
             return new NinjectServiceLocator(kernel);
         }
 
-        public static void RegisterDependency(IKernel kernel, INavigator navigator)
+        public static void RegisterDependency(IKernel kernel)
         {
-            kernel.Bind<INavigator>().ToConstant(navigator);
         }
     }
 }
