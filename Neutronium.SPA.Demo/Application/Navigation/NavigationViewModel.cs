@@ -116,20 +116,20 @@ namespace Neutronium.SPA.Demo.Application.Navigation
             context.Complete();
         }
 
-        public Task Navigate(object viewModel, string routerName = null)
+        public Task Navigate(object viewModel, string routeName)
         {
-            var route = routerName ?? _RouterSolver.SolveRoute(viewModel);
+            var route = routeName ?? _RouterSolver.SolveRoute(viewModel);
             var routeContext = CreateRouteContext(viewModel, route);
             Route = route;
             return routeContext.Task;
         }
 
-        public async Task Navigate<T>(NavigationContext<T> context = null)
+        public async Task Navigate<T>(NavigationContext<T> contet = null)
         {
-            var resolutionKey = context?.ResolutionKey;
+            var resolutionKey = contet?.ResolutionKey;
             var vm = (resolutionKey == null) ? _ServiceLocator.GetInstance<T>() : _ServiceLocator.GetInstance<T>(resolutionKey);
-            context?.BeforeNavigate(vm);
-            await Navigate(vm, context?.RouteName);
+            contet?.BeforeNavigate(vm);
+            await Navigate(vm, contet?.RouteName);
         }
 
         public async Task Navigate(Type type, NavigationContext context = null)
@@ -137,6 +137,12 @@ namespace Neutronium.SPA.Demo.Application.Navigation
             var resolutionKey = context?.ResolutionKey;
             var vm = (resolutionKey == null) ? _ServiceLocator.GetInstance(type) : _ServiceLocator.GetInstance(type, resolutionKey);
             await Navigate(vm, context?.RouteName);
+        }
+
+        public Task Navigate(string routeName)
+        {
+            var routeContext = CreateRouteContext(routeName);
+            return routeContext.Task;
         }
     }
 }
