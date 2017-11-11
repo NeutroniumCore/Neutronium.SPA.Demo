@@ -25,7 +25,7 @@ namespace Neutronium.SPA.Demo.Application.Navigation
 
         private readonly IServiceLocator _ServiceLocator;
         private readonly IRouterSolver _RouterSolver;
-        private readonly Queue<RouteContext> _currentNavigations = new Queue<RouteContext>();
+        private readonly Queue<RouteContext> _CurrentNavigations = new Queue<RouteContext>();
 
         private object _ViewModel;
 
@@ -53,15 +53,12 @@ namespace Neutronium.SPA.Demo.Application.Navigation
         public static NavigationViewModelAterFacts Create(object viewModel, Func<INavigator, IServiceLocator> serviceLocatorBuilder, IRouterSolver routerSolver) 
         {            
             serviceLocatorBuilder = serviceLocatorBuilder ?? CreateWithNavigator;
-            IServiceLocator serviceLocator = null;
+            IServiceLocator serviceLocator;
             var navigationViewModel = new NavigationViewModel(viewModel, serviceLocatorBuilder, routerSolver, out serviceLocator);
             return new NavigationViewModelAterFacts(serviceLocator, navigationViewModel);
         }
 
-        private static IServiceLocator CreateWithNavigator(INavigator navigator) 
-        {
-            return new TrivialServiceLocator().Add(navigator);
-        }
+        private static Func<INavigator, IServiceLocator> CreateWithNavigator => _ => new TrivialServiceLocator();
 
         private bool BeforeResolve(string routeName)
         {
@@ -81,10 +78,10 @@ namespace Neutronium.SPA.Demo.Application.Navigation
 
         private RouteContext GetRouteContext(string routeName)
         {
-            if (_currentNavigations.Count == 0)
+            if (_CurrentNavigations.Count == 0)
                 return CreateRouteContext(routeName);
 
-            var context = _currentNavigations.Peek();
+            var context = _CurrentNavigations.Peek();
             if (context.Route != routeName) 
             {
                 Console.WriteLine($"Navigation inconsistency: from browser {routeName}, from context: {context.Route}");
@@ -104,13 +101,13 @@ namespace Neutronium.SPA.Demo.Application.Navigation
         private RouteContext CreateRouteContext(object viewModel, string routeName) 
         {
             var routeContext = new RouteContext(viewModel, routeName);
-            _currentNavigations.Enqueue(routeContext);
+            _CurrentNavigations.Enqueue(routeContext);
             return routeContext;
         }
 
         private void AfterResolve(string routeName)
         {
-            var context = _currentNavigations.Dequeue();
+            var context = _CurrentNavigations.Dequeue();
             if (context.Route != routeName) 
             {
                 Console.WriteLine($"Navigation inconsistency: from browser {routeName}, from context: {context.Route}. Maybe rerouted?");

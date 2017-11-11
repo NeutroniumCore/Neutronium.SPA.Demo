@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using CommonServiceLocator.NinjectAdapter.Unofficial;
+﻿using CommonServiceLocator.NinjectAdapter.Unofficial;
 using Microsoft.Practices.ServiceLocation;
 using Neutronium.SPA.Demo.Application.Navigation;
 using Ninject;
