@@ -1,4 +1,4 @@
-﻿namespace Neutronium.SPA.Demo.ViewModel.Menu 
+﻿namespace Neutronium.SPA.Demo.ViewModel.Pages 
 {
     public class AboutViewModel 
     {

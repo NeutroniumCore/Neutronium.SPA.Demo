@@ -1,7 +1,7 @@
 ﻿using System;
 using Neutronium.SPA.Demo.ViewModel;
+using Neutronium.SPA.Demo.ViewModel.Pages;
 using Neutronium.WPF.ViewModel;
-using Neutronium.SPA.Demo.ViewModel.Menu;
 
 namespace Neutronium.SPA.Demo 
 {

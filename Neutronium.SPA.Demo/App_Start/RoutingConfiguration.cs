@@ -1,7 +1,6 @@
 ﻿using Neutronium.Core.Navigation.Routing;
 using Neutronium.SPA.Demo.Application.Navigation;
 using Neutronium.SPA.Demo.ViewModel;
-using Neutronium.SPA.Demo.ViewModel.Menu;
 
 namespace Neutronium.SPA.Demo
 {
@@ -18,7 +17,7 @@ namespace Neutronium.SPA.Demo
         {
             var convention = routeBuilder.GetTemplateConvention("{vm}");
             typeof(RoutingConfiguration).GetTypesFromSameAssembly()
-                .InNamespace("Neutronium.SPA.Demo.ViewModel.Menu")
+                .InNamespace("Neutronium.SPA.Demo.ViewModel.Pages")
                 .Register(convention);
         }
     }

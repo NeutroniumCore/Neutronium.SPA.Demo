@@ -19,6 +19,9 @@
         <text-button :command="viewModel.GoToAbout" text="Go To About section">
         </text-button>
 
+        <text-button :command="viewModel.Restart" text="Restart" color="error">
+        </text-button>
+
         </v-container>
       </v-content>
     </main>

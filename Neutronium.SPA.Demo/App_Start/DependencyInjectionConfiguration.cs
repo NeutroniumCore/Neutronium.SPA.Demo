@@ -2,6 +2,7 @@
 using Microsoft.Practices.ServiceLocation;
 using Neutronium.SPA.Demo.Application.Navigation;
 using Ninject;
+using Vm.Tools.Application;
 
 namespace Neutronium.SPA.Demo 
 {
@@ -17,6 +18,10 @@ namespace Neutronium.SPA.Demo
 
         public static void RegisterDependency(IKernel kernel)
         {
+            var window = System.Windows.Application.Current.MainWindow;
+            var application = new WpfApplication(window);
+
+            kernel.Bind<IApplication>().ToConstant(application);
         }
     }
 }
