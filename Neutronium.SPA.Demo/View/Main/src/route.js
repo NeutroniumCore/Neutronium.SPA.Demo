@@ -1,26 +1,18 @@
 import Router from 'vue-router'
-import main from './pages/main.vue'
-import about from './pages/about.vue'
+import routeDefinitions from './routeDefinitions'
 import {toPromise} from 'neutronium-vue-resultcommand-topromise'
 
-function route (component, path, name, icon, children) {
+function route ({name, children, component}) {
     return {
         exact: true,
-        path,
-        name,
+        path: `/${name}`,
+        name: name,
         children,
-        component,
-        meta:{
-            icon
-        }
+        component
     }
 }
 
-const allRoutes = [
-    route(main,'/main', 'main', 'view_list'),
-    route(about, '/about', 'about', 'info')
-]
-
+const allRoutes = routeDefinitions.map(route)
 const routes = [...allRoutes, { path: '/', redirect: '/main' }]
 
 const router = new Router({
@@ -29,10 +21,10 @@ const router = new Router({
     routes
 });
 
-const menu = allRoutes.map(r => ({
-    title: `${r.name}`,
-    to: r.path,
-    icon: r.meta.icon
+const menu = routeDefinitions.filter(r => r.menu).map( ({name, menu}) => ({
+    title: `${name}`,
+    to: {name},
+    icon: menu.icon
 }))
 
 function getRouterViewModel(router){
