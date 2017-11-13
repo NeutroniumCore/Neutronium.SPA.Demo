@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Microsoft.Practices.ServiceLocation;
 using Neutronium.MVVMComponents;
 using Neutronium.MVVMComponents.Relay;
-using Neutronium.SPA.Demo.Application.Ioc;
 
 namespace Neutronium.SPA.Demo.Application.Navigation
 {
@@ -29,36 +28,23 @@ namespace Neutronium.SPA.Demo.Application.Navigation
 
         private object _ViewModel;
 
-        public NavigationViewModel(object viewModel, Func<INavigator, IServiceLocator> serviceLocatorBuilder, IRouterSolver routerSolver, out IServiceLocator serviceLocator)
+        public NavigationViewModel(IServiceLocator serviceLocator, IRouterSolver routerSolver)
         {
-            _ViewModel = viewModel;
-            serviceLocator = serviceLocatorBuilder(this);
             _ServiceLocator = serviceLocator;
             _RouterSolver = routerSolver;
             AfterResolveCommand = new RelaySimpleCommand<string>(AfterResolve);
             BeforeResolveCommand = RelayResultCommand.Create<string, BeforeRouterResult>(BeforeResolve);
         }
 
-        public struct NavigationViewModelAterFacts
+        public void SetInitialVm(object viewModel) 
         {
-            public NavigationViewModelAterFacts(IServiceLocator serviceLocator, NavigationViewModel navigationViewModel)
-            {
-                ServiceLocator = serviceLocator;
-                ViewModel = navigationViewModel;
-            }
-            public IServiceLocator ServiceLocator { get; }
-            public NavigationViewModel ViewModel { get; }
+            _ViewModel = viewModel;
         }
 
-        public static NavigationViewModelAterFacts Create(object viewModel, Func<INavigator, IServiceLocator> serviceLocatorBuilder, IRouterSolver routerSolver)
+        public static NavigationViewModel Create(IServiceLocator serviceLocator, IRouterSolver routerSolver)
         {
-            serviceLocatorBuilder = serviceLocatorBuilder ?? CreateWithNavigator;
-            IServiceLocator serviceLocator;
-            var navigationViewModel = new NavigationViewModel(viewModel, serviceLocatorBuilder, routerSolver, out serviceLocator);
-            return new NavigationViewModelAterFacts(serviceLocator, navigationViewModel);
+            return new NavigationViewModel(serviceLocator, routerSolver);
         }
-
-        private static Func<INavigator, IServiceLocator> CreateWithNavigator => _ => new TrivialServiceLocator();
 
         private BeforeRouterResult BeforeResolve(string routeName)
         {

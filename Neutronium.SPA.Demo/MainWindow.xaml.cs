@@ -20,7 +20,7 @@ namespace Neutronium.SPA.Demo
         {
             var window = new WindowViewModel(this);
             var routeSolver = RoutingConfiguration.Register();
-            return ApplicationViewModel.CreateApplicationViewModel<MainViewModel>(window, routeSolver, DependencyInjectionConfiguration.Register);
+            return ApplicationViewModel.CreateApplicationViewModel<MainViewModel>(window, routeSolver, new DependencyInjectionConfiguration());
         }
 
         protected override void OnClosed(EventArgs e)

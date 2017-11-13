@@ -144,11 +144,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Application\Ioc\TrivialDependencyInjectionConfiguration.cs" />
     <Compile Include="Application\Navigation\BeforeRouterResult.cs" />
     <Compile Include="Application\Navigation\ConventionRouter.cs" />
     <Compile Include="Application\Navigation\RoutedEventArgs.cs" />
     <Compile Include="Application\Navigation\RouterBuilderExtensions.cs" />
     <Compile Include="Application\Navigation\RoutingEventArgs.cs" />
+    <Compile Include="App_Start\IDependencyInjectionConfiguration.cs" />
+    <Compile Include="ViewModel\IConfirmationDisplayer.cs" />
+    <Compile Include="ViewModel\MessageInformation.cs" />
+    <Compile Include="ViewModel\MainModalViewModel.cs" />
     <Compile Include="ViewModel\Pages\AboutModel.cs" />
     <Compile Include="ViewModel\Pages\MainViewModel.cs" />
     <Page Include="MainWindow.xaml">
