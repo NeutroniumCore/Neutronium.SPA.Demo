@@ -11,7 +11,7 @@ namespace Neutronium.SPA.Demo.ViewModel
     {
         public ApplicationInformation ApplicationInformation { get; } = new ApplicationInformation();
         public IWindowViewModel Window { get; }
-        public INavigator Router { get; }
+        public NavigationViewModel Router { get; }
 
         private object _CurrentViewModel;
         public object CurrentViewModel 
@@ -38,7 +38,7 @@ namespace Neutronium.SPA.Demo.ViewModel
             return new ApplicationViewModel(window, navigation, serviceLocatorBuilder, typeof(T));
         }
 
-        private ApplicationViewModel(IWindowViewModel window, INavigator router, IDependencyInjectionConfiguration serviceLocatorBuilder, Type initialType)
+        private ApplicationViewModel(IWindowViewModel window, NavigationViewModel router, IDependencyInjectionConfiguration serviceLocatorBuilder, Type initialType)
         {
             Window = window;
             Router = router;
