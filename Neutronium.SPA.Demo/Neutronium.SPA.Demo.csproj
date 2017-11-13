@@ -144,8 +144,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Application\Navigation\BeforeRouterResult.cs" />
     <Compile Include="Application\Navigation\ConventionRouter.cs" />
+    <Compile Include="Application\Navigation\RoutedEventArgs.cs" />
     <Compile Include="Application\Navigation\RouterBuilderExtensions.cs" />
+    <Compile Include="Application\Navigation\RoutingEventArgs.cs" />
     <Compile Include="ViewModel\Pages\AboutModel.cs" />
     <Compile Include="ViewModel\Pages\MainViewModel.cs" />
     <Page Include="MainWindow.xaml">

@@ -2,26 +2,26 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Practices.ServiceLocation;
-using Neutronium.Core.Navigation;
 using Neutronium.MVVMComponents;
 using Neutronium.MVVMComponents.Relay;
 using Neutronium.SPA.Demo.Application.Ioc;
 
 namespace Neutronium.SPA.Demo.Application.Navigation
 {
-    public class NavigationViewModel : Vm.Tools.ViewModel, INavigator 
+    public class NavigationViewModel : Vm.Tools.ViewModel, INavigator
     {
         public IResultCommand BeforeResolveCommand { get; }
         public ISimpleCommand<string> AfterResolveCommand { get; }
 
         private string _Route;
-        public string Route 
+        public string Route
         {
             get { return _Route; }
             set { Set(ref _Route, value); }
         }
 
-        public event EventHandler<NavigationEvent> OnNavigate;
+        public event EventHandler<RoutingEventArgs> OnNavigating;
+        public event EventHandler<RoutedEventArgs> OnNavigated;
 
         private readonly IServiceLocator _ServiceLocator;
         private readonly IRouterSolver _RouterSolver;
@@ -31,17 +31,17 @@ namespace Neutronium.SPA.Demo.Application.Navigation
 
         public NavigationViewModel(object viewModel, Func<INavigator, IServiceLocator> serviceLocatorBuilder, IRouterSolver routerSolver, out IServiceLocator serviceLocator)
         {
-            _ViewModel = viewModel;            
+            _ViewModel = viewModel;
             serviceLocator = serviceLocatorBuilder(this);
             _ServiceLocator = serviceLocator;
             _RouterSolver = routerSolver;
             AfterResolveCommand = new RelaySimpleCommand<string>(AfterResolve);
-            BeforeResolveCommand = RelayResultCommand.Create<string, bool>(BeforeResolve);
+            BeforeResolveCommand = RelayResultCommand.Create<string, BeforeRouterResult>(BeforeResolve);
         }
 
-        public struct NavigationViewModelAterFacts 
+        public struct NavigationViewModelAterFacts
         {
-            public NavigationViewModelAterFacts(IServiceLocator serviceLocator, NavigationViewModel navigationViewModel) 
+            public NavigationViewModelAterFacts(IServiceLocator serviceLocator, NavigationViewModel navigationViewModel)
             {
                 ServiceLocator = serviceLocator;
                 ViewModel = navigationViewModel;
@@ -50,8 +50,8 @@ namespace Neutronium.SPA.Demo.Application.Navigation
             public NavigationViewModel ViewModel { get; }
         }
 
-        public static NavigationViewModelAterFacts Create(object viewModel, Func<INavigator, IServiceLocator> serviceLocatorBuilder, IRouterSolver routerSolver) 
-        {            
+        public static NavigationViewModelAterFacts Create(object viewModel, Func<INavigator, IServiceLocator> serviceLocatorBuilder, IRouterSolver routerSolver)
+        {
             serviceLocatorBuilder = serviceLocatorBuilder ?? CreateWithNavigator;
             IServiceLocator serviceLocator;
             var navigationViewModel = new NavigationViewModel(viewModel, serviceLocatorBuilder, routerSolver, out serviceLocator);
@@ -60,20 +60,33 @@ namespace Neutronium.SPA.Demo.Application.Navigation
 
         private static Func<INavigator, IServiceLocator> CreateWithNavigator => _ => new TrivialServiceLocator();
 
-        private bool BeforeResolve(string routeName)
+        private BeforeRouterResult BeforeResolve(string routeName)
         {
             var context = GetRouteContext(routeName);
-            if (context == null)
-                return false;
-
-            Navigate(context.ViewModel);
-            return true;
+            return (context == null) ? new BeforeRouterResult(false) : Navigate(context);
         }
 
-        private void Navigate(object viewModel) 
+        private BeforeRouterResult Navigate(RouteContext to)
         {
-            OnNavigate?.Invoke(this, new NavigationEvent(viewModel, _ViewModel));
-            _ViewModel = viewModel;
+            var routingEventArgs = new RoutingEventArgs(to, Route, _ViewModel);
+            OnNavigating?.Invoke(this, routingEventArgs);           
+
+            if (routingEventArgs.Cancel)
+            {
+                _CurrentNavigations.Dequeue();
+                to.Complete();
+                return new BeforeRouterResult(false);
+            }
+
+            var redirect = routingEventArgs.RedirectedTo;
+            if (string.IsNullOrEmpty(redirect))
+            {
+                _ViewModel = to.ViewModel;
+                return new BeforeRouterResult(null);
+            }
+
+            to.Redirect(redirect, GetViewModelFromRoute(redirect));
+            return new BeforeRouterResult(redirect);
         }
 
         private RouteContext GetRouteContext(string routeName)
@@ -82,23 +95,27 @@ namespace Neutronium.SPA.Demo.Application.Navigation
                 return CreateRouteContext(routeName);
 
             var context = _CurrentNavigations.Peek();
-            if (context.Route != routeName) 
+            if (context.Route != routeName)
             {
                 Console.WriteLine($"Navigation inconsistency: from browser {routeName}, from context: {context.Route}");
                 return null;
-            }       
+            }
 
             return context;
         }
 
         private RouteContext CreateRouteContext(string routeName)
         {
-            var type = _RouterSolver.SolveType(routeName);
-            var vm = _ServiceLocator.GetInstance(type);
-            return CreateRouteContext(vm, routeName);
+            return CreateRouteContext(GetViewModelFromRoute(routeName), routeName);
         }
 
-        private RouteContext CreateRouteContext(object viewModel, string routeName) 
+        private object GetViewModelFromRoute(string routeName)
+        {
+            var type = _RouterSolver.SolveType(routeName);
+            return _ServiceLocator.GetInstance(type);
+        }
+
+        private RouteContext CreateRouteContext(object viewModel, string routeName)
         {
             var routeContext = new RouteContext(viewModel, routeName);
             _CurrentNavigations.Enqueue(routeContext);
@@ -108,17 +125,28 @@ namespace Neutronium.SPA.Demo.Application.Navigation
         private void AfterResolve(string routeName)
         {
             var context = _CurrentNavigations.Dequeue();
-            if (context.Route != routeName) 
+            if (context.Route != routeName)
             {
                 Console.WriteLine($"Navigation inconsistency: from browser {routeName}, from context: {context.Route}. Maybe rerouted?");
             }
             Route = routeName;
             context.Complete();
+            OnNavigated?.Invoke(this, new RoutedEventArgs(context));
         }
 
         public Task Navigate(object viewModel, string routeName)
         {
             var route = routeName ?? _RouterSolver.SolveRoute(viewModel);
+
+            if (Route == route)
+            {
+                if (!ReferenceEquals(_ViewModel, viewModel))
+                    OnNavigated?.Invoke(this, new RoutedEventArgs(viewModel, route));
+
+                _ViewModel = viewModel;
+                return Task.FromResult(0);
+            }
+
             var routeContext = CreateRouteContext(viewModel, route);
             Route = route;
             return routeContext.Task;
@@ -141,8 +169,12 @@ namespace Neutronium.SPA.Demo.Application.Navigation
 
         public Task Navigate(string routeName)
         {
-            var routeContext = CreateRouteContext(routeName);
-            return routeContext.Task;
+            if (Route==routeName)
+                return Task.FromResult(0);
+
+            var ctx = CreateRouteContext(routeName);
+            Route = routeName;
+            return ctx.Task;
         }
     }
 }

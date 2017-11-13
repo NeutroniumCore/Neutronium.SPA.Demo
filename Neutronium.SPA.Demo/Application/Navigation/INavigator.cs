@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Neutronium.Core.Navigation;
 
 namespace Neutronium.SPA.Demo.Application.Navigation
 {
@@ -14,6 +13,8 @@ namespace Neutronium.SPA.Demo.Application.Navigation
 
         Task Navigate(Type type, NavigationContext context = null);
 
-        event EventHandler<NavigationEvent> OnNavigate;
+        event EventHandler<RoutingEventArgs> OnNavigating;
+
+        event EventHandler<RoutedEventArgs> OnNavigated;
     }
 }

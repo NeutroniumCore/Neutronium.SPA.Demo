@@ -1,12 +1,12 @@
 <template>
   <v-app dark>
 
+    <top-menu v-model="drawer" :title="viewModel.ApplicationInformation.Name" :window="viewModel.Window">
+    </top-menu>
+
     <side-menu v-model="drawer" :items="menu">
     </side-menu>
 
-    <top-menu v-model="drawer" :title="viewModel.ApplicationInformation.Name" :window="viewModel.Window">
-    </top-menu>
-    
     <transition mode="out-in">
       <router-view :viewModel="viewModel.CurrentViewModel"></router-view>
     </transition>
@@ -46,9 +46,11 @@ export default {
       menu
     }
   },
+    mounted(){
+      this.$nextTick(()=> this.viewModel.Router.Route = this.$route.name);
+  },
   watch:{
     'viewModel.Router.Route': function(name){
-      console.log(name);
       this.$router.push({name});
     }
   }

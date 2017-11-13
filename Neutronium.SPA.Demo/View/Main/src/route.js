@@ -56,10 +56,12 @@ router.beforeEach((to, from, next) => {
 
     const promise = toPromise(navigator, to.name);
     promise.then((ok)=>{
-        if (ok) {
-            next()
+        if (!ok.Continue) {
+            next(false)
+        } else if (ok.Redirect) {
+            next({name: ok.Redirect});
         } else {
-            next(false);
+            next();
         }
     }, (error) =>{
         next(error)

@@ -30,12 +30,12 @@ namespace Neutronium.SPA.Demo.ViewModel
             CurrentViewModel = initialViewModel;
             Window = window;
             Router = router;
-            Router.OnNavigate += Router_OnNavigate;
+            Router.OnNavigated += Router_OnNavigated;
         }
 
-        private void Router_OnNavigate(object sender, Core.Navigation.NavigationEvent e)
+        private void Router_OnNavigated(object sender, RoutedEventArgs e)
         {
-            CurrentViewModel = e.NewViewModel;
+            CurrentViewModel = e.NewRoute.ViewModel;
         }
     }
 }
