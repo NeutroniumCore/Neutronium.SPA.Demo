@@ -46,12 +46,22 @@ namespace Neutronium.SPA.Demo.ViewModel
             RegisterApplicationDependency(serviceLocatorBuilder);
 
             var serviceLocator = serviceLocatorBuilder.GetServiceLocator();
-            var currentViewModel = serviceLocator.GetInstance(initialType);
+            
             _Application = serviceLocator.GetInstance<IApplication>();
 
+            var currentViewModel = serviceLocator.GetInstance(initialType);
             CurrentViewModel = currentViewModel;
+
+            _Application.MainWindowClosing += _Application_MainWindowClosing;
+
             Router.SetInitialVm(currentViewModel);
             Router.OnNavigated += Router_OnNavigated;
+        }
+
+        private async void _Application_MainWindowClosing(object sender, System.ComponentModel.CancelEventArgs e) 
+        {
+            var message = new MessageInformation("Warning", "Do you want to close application?");
+            e.Cancel = await ShowMessage(message);
         }
 
         private void RegisterApplicationDependency(IDependencyInjectionConfiguration serviceLocatorBuilder) 
@@ -61,11 +71,13 @@ namespace Neutronium.SPA.Demo.ViewModel
             serviceLocatorBuilder.Register<INavigator>(Router);
         }
 
-        public Task<bool> ShowMessage(MessageInformation messageInformation) 
+        public async Task<bool> ShowMessage(MessageInformation messageInformation) 
         {
             var modal = new MainModalViewModel(messageInformation);
             Modal = modal;
-            return modal.CompletionTask;
+            if (modal != null)
+                return false;
+            return await modal.CompletionTask;
         }
 
         private void Router_OnNavigated(object sender, RoutedEventArgs e)

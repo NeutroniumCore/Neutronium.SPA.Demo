@@ -15,6 +15,7 @@ import {
     VGrid,
     VToolbar,
     VCard,
+    VDialog,
     transitions
   } from 'vuetify'
 
@@ -30,6 +31,7 @@ function install(Vue) {
           VGrid,
           VToolbar,
           VCard,
+          VDialog,
           transitions
         }
     })

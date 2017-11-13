@@ -4,6 +4,9 @@
     <top-menu v-model="drawer" :title="viewModel.ApplicationInformation.Name" :window="viewModel.Window">
     </top-menu>
 
+    <modal v-model="modal" :viewModel="viewModel.Modal">
+    </modal>
+
     <side-menu v-model="drawer" :items="menu">
     </side-menu>
 
@@ -22,6 +25,7 @@
 import sideMenu from './components/sideMenu'
 import applicationFooter from './components/applicationFooter'
 import topMenu from './components/topMenu'
+import modal from './components/modal'
 
 import {menu} from './route'
 
@@ -34,7 +38,8 @@ export default {
   components:{
       sideMenu,
       applicationFooter,
-      topMenu
+      topMenu,
+      modal
   },
   name: 'app',
   props,
@@ -43,6 +48,7 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
+      modal:false,
       menu
     }
   },
@@ -52,6 +58,9 @@ export default {
   watch:{
     'viewModel.Router.Route': function(name){
       this.$router.push({name});
+    },
+    'viewModel.Modal': function(value){
+      this.modal = (value!= null)
     }
   }
 }
