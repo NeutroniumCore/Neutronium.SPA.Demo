@@ -9,7 +9,7 @@ namespace Neutronium.SPA.Demo.Application.Navigation
 
         Task Navigate(string routeName);
 
-        Task Navigate<T>(NavigationContext<T> contet = null);
+        Task Navigate<T>(NavigationContext<T> context = null);
 
         Task Navigate(Type type, NavigationContext context = null);
 

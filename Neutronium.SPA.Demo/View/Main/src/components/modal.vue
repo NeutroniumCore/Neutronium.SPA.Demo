@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="value" v-if="viewModel" :persistent="viewModel.CancelCommand">
+  <v-dialog v-model="value" v-if="viewModel" :persistent="!!viewModel.CancelCommand">
       <v-card>
         <v-card-title class="headline">{{viewModel.Title}}</v-card-title>
         <v-card-text>{{viewModel.Message}}</v-card-text>

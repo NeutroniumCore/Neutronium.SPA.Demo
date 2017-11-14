@@ -6,6 +6,8 @@ namespace Neutronium.SPA.Demo.Application.Navigation
     {
         string SolveRoute(object viewModel);
 
+        string SolveRoute<T>();
+
         Type SolveType(string route);
     }
 }

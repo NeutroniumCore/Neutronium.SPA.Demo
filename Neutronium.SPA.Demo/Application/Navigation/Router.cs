@@ -27,7 +27,17 @@ namespace Neutronium.SPA.Demo.Application.Navigation
 
         public string SolveRoute(object viewModel)
         {
-            return _TypeToRoute.GetOrDefault(viewModel.GetType());
+            return SolveRoute(viewModel.GetType());
+        }
+
+        public string SolveRoute<T>()
+        {
+            return SolveRoute(typeof(T));
+        }
+
+        private string SolveRoute(Type type)
+        {
+            return _TypeToRoute.GetOrDefault(type);
         }
 
         public Type SolveType(string route)

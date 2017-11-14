@@ -36,11 +36,6 @@ namespace Neutronium.SPA.Demo.Application.Navigation
             BeforeResolveCommand = RelayResultCommand.Create<string, BeforeRouterResult>(BeforeResolve);
         }
 
-        public void SetInitialVm(object viewModel) 
-        {
-            _ViewModel = viewModel;
-        }
-
         public static NavigationViewModel Create(IServiceLocator serviceLocator, IRouterSolver routerSolver)
         {
             return new NavigationViewModel(serviceLocator, routerSolver);
@@ -108,6 +103,14 @@ namespace Neutronium.SPA.Demo.Application.Navigation
             return routeContext;
         }
 
+        internal void StartRoute<T>()
+        {
+            _ViewModel = _ServiceLocator.GetInstance<T>();
+            var route = _RouterSolver.SolveRoute<T>();
+            Route = route;
+            OnNavigated?.Invoke(this, new RoutedEventArgs(_ViewModel, route));
+        }
+
         private void AfterResolve(string routeName)
         {
             var context = _CurrentNavigations.Dequeue();
@@ -115,8 +118,9 @@ namespace Neutronium.SPA.Demo.Application.Navigation
             {
                 Console.WriteLine($"Navigation inconsistency: from browser {routeName}, from context: {context.Route}. Maybe rerouted?");
             }
-            Route = routeName;
             context.Complete();
+
+            Route = routeName;          
             OnNavigated?.Invoke(this, new RoutedEventArgs(context));
         }
 
@@ -138,12 +142,12 @@ namespace Neutronium.SPA.Demo.Application.Navigation
             return routeContext.Task;
         }
 
-        public async Task Navigate<T>(NavigationContext<T> contet = null)
+        public async Task Navigate<T>(NavigationContext<T> context = null)
         {
-            var resolutionKey = contet?.ResolutionKey;
+            var resolutionKey = context?.ResolutionKey;
             var vm = (resolutionKey == null) ? _ServiceLocator.GetInstance<T>() : _ServiceLocator.GetInstance<T>(resolutionKey);
-            contet?.BeforeNavigate(vm);
-            await Navigate(vm, contet?.RouteName);
+            context?.BeforeNavigate(vm);
+            await Navigate(vm, context?.RouteName);
         }
 
         public async Task Navigate(Type type, NavigationContext context = null)
