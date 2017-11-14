@@ -10,7 +10,7 @@
         <icon-button :command="window.Minimize" icon="remove">
         </icon-button>
 
-        <icon-button :command="window.Normalize" icon="fa-window-restore">
+        <icon-button :command="window.Normalize" :icon="middleIcon">
         </icon-button>
 
         <icon-button :command="window.Close" icon="close">
@@ -42,6 +42,12 @@ export default {
 
     components:{
         iconButton
+    },
+
+    computed:{
+        middleIcon(){
+            return (this.window.State.displayName == 'Normal') ? 'fa-window-maximize' : 'fa-window-restore'
+        }
     },
 
     methods:{

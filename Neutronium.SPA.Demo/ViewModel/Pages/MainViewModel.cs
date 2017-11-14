@@ -1,6 +1,7 @@
 ﻿using Neutronium.MVVMComponents;
 using Neutronium.MVVMComponents.Relay;
 using Neutronium.SPA.Demo.Application.Navigation;
+using Neutronium.SPA.Demo.WindowServices;
 using Vm.Tools.Application;
 
 namespace Neutronium.SPA.Demo.ViewModel.Pages 
@@ -14,11 +15,13 @@ namespace Neutronium.SPA.Demo.ViewModel.Pages
 
         private readonly INavigator _Navigator;
         private readonly IApplication _Application;
+        private readonly IMessageBox _MessageBox;
 
-        public MainViewModel(INavigator navigator, IApplication application)
+        public MainViewModel(INavigator navigator, IApplication application, IMessageBox messageBox)
         {
             _Navigator = navigator;
             _Application = application;
+            _MessageBox = messageBox;
             GoToAbout = new RelaySimpleCommand(DoGoToAbout);
             Restart = new RelaySimpleCommand(DoRestart);
         }
@@ -28,9 +31,13 @@ namespace Neutronium.SPA.Demo.ViewModel.Pages
             _Navigator.Navigate<AboutViewModel>();
         }
 
-        private void DoRestart()
+        private async void DoRestart()
         {
-            _Application.Restart();
+            var message = new ConfirmationMessage("Confirmation needed", "Do you want to restart application?");
+            var res = await _MessageBox.ShowMessage(message);
+
+            if (res)
+                _Application.Restart();
         }
     }
 }

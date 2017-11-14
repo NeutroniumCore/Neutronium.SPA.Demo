@@ -2,38 +2,31 @@
 using System.Threading.Tasks;
 using Neutronium.MVVMComponents;
 using Neutronium.MVVMComponents.Relay;
+using Neutronium.SPA.Demo.WindowServices;
 
-namespace Neutronium.SPA.Demo.ViewModel 
+namespace Neutronium.SPA.Demo.ViewModel.Modal 
 {
-    public class MainModalViewModel 
+    public class MainModalViewModel : MessageModalViewModel
     {
-        public string Title { get; }
-        public string Message { get; }
-        public string OkMessage { get; }
         public string CancelMessage { get; }
 
         [Bindable(false)]
         public bool? Result { get; set; }
 
+        [Bindable(false)]
         public Task<bool> CompletionTask => _TaskCompletionSource.Task;
 
-        private ISimpleCommand OkCommand { get; }
-        private ISimpleCommand CancelCommand { get; }
+        public ISimpleCommand CancelCommand { get; }
 
-        private TaskCompletionSource<bool> _TaskCompletionSource = new TaskCompletionSource<bool>();
+        private readonly TaskCompletionSource<bool> _TaskCompletionSource = new TaskCompletionSource<bool>();
 
-        public MainModalViewModel(MessageInformation messageInformation) 
+        public MainModalViewModel(ConfirmationMessage confirmationMessage) :base(confirmationMessage)
         {
-            Title = messageInformation.Title;
-            Message = messageInformation.Message;
-            OkMessage = messageInformation.OkMessage;
-            CancelMessage = messageInformation.CancelMessage;
-
-            OkCommand = new RelaySimpleCommand(Ok);
+            CancelMessage = confirmationMessage.CancelMessage;
             CancelCommand = new RelaySimpleCommand(Cancel);
         }
 
-        private void Ok() => SetResult(true);
+        protected override void Ok() => SetResult(true);
 
         private void Cancel() => SetResult(false);
 

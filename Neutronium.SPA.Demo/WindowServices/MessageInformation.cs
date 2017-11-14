@@ -1,8 +1,7 @@
-﻿namespace Neutronium.SPA.Demo.ViewModel 
+﻿namespace Neutronium.SPA.Demo.WindowServices
 {
-    public struct MessageInformation 
+    public class MessageInformation
     {
-        public string CancelMessage { get; }
         public string Message { get; }
         public string OkMessage { get; }
         public string Title { get; }
@@ -12,14 +11,13 @@
             Title = title;
             Message = message;
             OkMessage = "Ok";
-            CancelMessage = "Cancel";
         }
-        public MessageInformation(string title, string message, string okMessage, string cancelMessage) 
+
+        public MessageInformation(string title, string message, string okMessage)
         {
             Title = title;
             Message = message;
             OkMessage = okMessage;
-            CancelMessage = cancelMessage;
         }
     }
 }

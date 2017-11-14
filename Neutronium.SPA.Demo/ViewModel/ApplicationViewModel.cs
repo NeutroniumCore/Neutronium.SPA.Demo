@@ -2,12 +2,14 @@
 using System.Threading.Tasks;
 using Neutronium.SPA.Demo.Application.Ioc;
 using Neutronium.SPA.Demo.Application.Navigation;
+using Neutronium.SPA.Demo.ViewModel.Modal;
+using Neutronium.SPA.Demo.WindowServices;
 using Neutronium.WPF.ViewModel;
 using Vm.Tools.Application;
 
 namespace Neutronium.SPA.Demo.ViewModel 
 {
-    public class ApplicationViewModel : Vm.Tools.ViewModel, IConfirmationDisplayer 
+    public class ApplicationViewModel : Vm.Tools.ViewModel, IMessageBox 
     {
         public ApplicationInformation ApplicationInformation { get; } = new ApplicationInformation();
         public IWindowViewModel Window { get; }
@@ -20,8 +22,8 @@ namespace Neutronium.SPA.Demo.ViewModel
             private set { Set(ref _CurrentViewModel, value); }
         }
 
-        private MainModalViewModel _Modal;
-        public MainModalViewModel Modal 
+        private MessageModalViewModel _Modal;
+        public MessageModalViewModel Modal 
         {
             get { return _Modal; }
             private set { Set(ref _Modal, value); }
@@ -52,32 +54,28 @@ namespace Neutronium.SPA.Demo.ViewModel
             var currentViewModel = serviceLocator.GetInstance(initialType);
             CurrentViewModel = currentViewModel;
 
-            _Application.MainWindowClosing += _Application_MainWindowClosing;
-
             Router.SetInitialVm(currentViewModel);
             Router.OnNavigated += Router_OnNavigated;
         }
 
-        private async void _Application_MainWindowClosing(object sender, System.ComponentModel.CancelEventArgs e) 
-        {
-            var message = new MessageInformation("Warning", "Do you want to close application?");
-            e.Cancel = await ShowMessage(message);
-        }
-
         private void RegisterApplicationDependency(IDependencyInjectionConfiguration serviceLocatorBuilder) 
         {
-            serviceLocatorBuilder.Register<IConfirmationDisplayer>(this);
+            serviceLocatorBuilder.Register<IMessageBox>(this);
             serviceLocatorBuilder.Register(Window);
             serviceLocatorBuilder.Register<INavigator>(Router);
         }
 
-        public async Task<bool> ShowMessage(MessageInformation messageInformation) 
+        public Task<bool> ShowMessage(ConfirmationMessage confirmationMessage) 
         {
-            var modal = new MainModalViewModel(messageInformation);
+            var modal = new MainModalViewModel(confirmationMessage);
             Modal = modal;
-            if (modal != null)
-                return false;
-            return await modal.CompletionTask;
+            return modal.CompletionTask;
+        }
+
+        public void ShowInformation(MessageInformation messageInformation)
+        {
+            var modal = new MessageModalViewModel(messageInformation);
+            Modal = modal;
         }
 
         private void Router_OnNavigated(object sender, RoutedEventArgs e)

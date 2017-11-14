@@ -151,9 +151,11 @@
     <Compile Include="Application\Navigation\RouterBuilderExtensions.cs" />
     <Compile Include="Application\Navigation\RoutingEventArgs.cs" />
     <Compile Include="App_Start\IDependencyInjectionConfiguration.cs" />
-    <Compile Include="ViewModel\IConfirmationDisplayer.cs" />
-    <Compile Include="ViewModel\Modal\MessageInformation.cs" />
+    <Compile Include="WindowServices\IMessageBox.cs" />
+    <Compile Include="WindowServices\ConfirmationMessage.cs" />
     <Compile Include="ViewModel\Modal\MainModalViewModel.cs" />
+    <Compile Include="WindowServices\MessageInformation.cs" />
+    <Compile Include="ViewModel\Modal\MessageModalViewModel.cs" />
     <Compile Include="ViewModel\Pages\AboutModel.cs" />
     <Compile Include="ViewModel\Pages\MainViewModel.cs" />
     <Page Include="MainWindow.xaml">
