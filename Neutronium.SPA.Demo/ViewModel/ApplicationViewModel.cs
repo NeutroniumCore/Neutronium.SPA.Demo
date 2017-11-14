@@ -41,8 +41,11 @@ namespace Neutronium.SPA.Demo.ViewModel
 
         private async void _Application_MainWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            var message = new ConfirmationMessage("Closing", "Sure?");
-            e.Cancel = !await ShowMessage(message);
+            e.Cancel = true;
+            var message = new ConfirmationMessage("Warning", "Do you want to quit?");
+            var cancel = await ShowMessage(message);
+            if (cancel)
+                _Application.ForceClose();
         }
 
         public Task<bool> ShowMessage(ConfirmationMessage confirmationMessage) 
