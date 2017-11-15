@@ -123,6 +123,9 @@
   <data name="ConfirmationNeeded" xml:space="preserve">
     <value>Confirmation needed</value>
   </data>
+  <data name="DoYouWantToCloseApplication" xml:space="preserve">
+    <value>Do you want to close application?</value>
+  </data>
   <data name="DoYouWantToRestartApplication" xml:space="preserve">
     <value>Do you want to restart application?</value>
   </data>

@@ -135,7 +135,7 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="Vm.Tools, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <HintPath>..\packages\Vm.Tools.1.3.0\lib\Vm.Tools.dll</HintPath>
+      <HintPath>..\packages\Vm.Tools.1.5.0\lib\Vm.Tools.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WindowsBase" />
@@ -147,7 +147,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Application\Ioc\TrivialDependencyInjectionConfiguration.cs" />
+    <Compile Include="Application\LifeCycleHook\ApplicationLifeCycle.cs" />
+    <Compile Include="Application\LifeCycleHook\IApplicationLifeCycle.cs" />
     <Compile Include="Application\Navigation\BeforeRouterResult.cs" />
     <Compile Include="Application\Navigation\ConventionRouter.cs" />
     <Compile Include="Application\Navigation\RoutedEventArgs.cs" />
@@ -156,6 +157,7 @@
     <Compile Include="App_Start\IDependencyInjectionConfiguration.cs" />
     <Compile Include="Application\WindowServices\IMessageBox.cs" />
     <Compile Include="Application\WindowServices\ConfirmationMessage.cs" />
+    <Compile Include="Application\LifeCycleHook\LifeCycleEventsRegistror.cs" />
     <Compile Include="Resource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -170,7 +172,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Application\Ioc\TrivialServiceLocator.cs" />
     <Compile Include="Application\Navigation\RouteContext.cs" />
     <Compile Include="Application\Navigation\IRouterBuilder.cs" />
     <Compile Include="Application\Navigation\IRouterSolver.cs" />

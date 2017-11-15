@@ -3,7 +3,6 @@ using Neutronium.SPA.Demo.Application.Navigation;
 using Neutronium.SPA.Demo.Application.WindowServices;
 using Neutronium.SPA.Demo.ViewModel.Modal;
 using Neutronium.WPF.ViewModel;
-using Vm.Tools.Application;
 
 namespace Neutronium.SPA.Demo.ViewModel 
 {
@@ -27,25 +26,12 @@ namespace Neutronium.SPA.Demo.ViewModel
             private set { Set(ref _Modal, value); }
         }
 
-        private readonly IApplication _Application;
 
-        public ApplicationViewModel(IWindowViewModel window, IApplication application, NavigationViewModel router)
+        public ApplicationViewModel(IWindowViewModel window, NavigationViewModel router)
         {
             Window = window;
             Router = router;
-            _Application = application;
-
             Router.OnNavigated += Router_OnNavigated;
-            _Application.MainWindowClosing += _Application_MainWindowClosing;
-        }
-
-        private async void _Application_MainWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            e.Cancel = true;
-            var message = new ConfirmationMessage("Warning", "Do you want to quit?");
-            var cancel = await ShowMessage(message);
-            if (cancel)
-                _Application.ForceClose();
         }
 
         public Task<bool> ShowMessage(ConfirmationMessage confirmationMessage) 

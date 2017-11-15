@@ -1,4 +1,6 @@
 ﻿using System;
+using Microsoft.Practices.ServiceLocation;
+using Neutronium.SPA.Demo.Application.LifeCycleHook;
 using Neutronium.SPA.Demo.Application.Navigation;
 using Neutronium.SPA.Demo.Application.WindowServices;
 using Neutronium.SPA.Demo.ViewModel;
@@ -12,6 +14,8 @@ namespace Neutronium.SPA.Demo
     /// </summary>
     public partial class MainWindow
     {
+        private LifeCycleEventsRegistror _LifeCycleEventsRegistror;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -33,7 +37,16 @@ namespace Neutronium.SPA.Demo
 
             var application = serviceLocator.GetInstance<ApplicationViewModel>();
             serviceLocatorBuilder.Register<IMessageBox>(application);
+
+            _LifeCycleEventsRegistror = RegisterLifeCycleEvents(serviceLocator);
+
             return application.StartRoute<MainViewModel>();
+        }
+
+        private LifeCycleEventsRegistror RegisterLifeCycleEvents(IServiceLocator serviceLocator)
+        {
+            var registor = serviceLocator.GetInstance<LifeCycleEventsRegistror>();
+            return registor.Register();
         }
 
         protected override void OnClosed(EventArgs e)

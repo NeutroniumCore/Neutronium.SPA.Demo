@@ -79,6 +79,15 @@ namespace Neutronium.SPA.Demo {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to close application?.
+        /// </summary>
+        internal static string DoYouWantToCloseApplication {
+            get {
+                return ResourceManager.GetString("DoYouWantToCloseApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you want to restart application?.
         /// </summary>
         internal static string DoYouWantToRestartApplication {
