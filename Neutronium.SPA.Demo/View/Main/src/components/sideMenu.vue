@@ -1,11 +1,22 @@
 <template>
-  <v-navigation-drawer
+  <v-navigation-drawer id="side-menu"
       :mini-variant="mini"
       :clipped="clipped"
       :value="value"
       @input="drawerChanged"
+      :marginTop="0"
+      :maxHeight="0"
       app
     >
+
+    <v-toolbar>
+        <v-btn icon @click.stop="mini =!mini" small>
+            <v-icon v-html="mini ? 'chevron_right' : 'chevron_left'"></v-icon>
+        </v-btn>
+    </v-toolbar>
+
+    <v-divider></v-divider>
+
       <v-list>
         <v-list-tile v-for="(item, i) in items" :key="i" :to="item.to" router ripple>
 
@@ -20,12 +31,6 @@
         </v-list-tile>
       </v-list>
 
-    <v-footer fixed dark class="drawer-footer">
-        <v-btn icon @click.stop="mini =!mini" small>
-            <v-icon v-html="mini ? 'chevron_right' : 'chevron_left'"></v-icon>
-        </v-btn>
-    </v-footer>
-      
     </v-navigation-drawer>
 </template>
 
@@ -60,8 +65,8 @@ export default {
 </script>
 
 <style>
-.drawer-footer {
-  height: 10px;
+#side-menu button{
+  -webkit-app-region: no-drag;
 }
 </style>
 

@@ -1,14 +1,16 @@
 <template>
   <v-app dark>
 
+    <side-menu v-model="drawer" :items="menu">
+    </side-menu>
+
     <top-menu v-model="drawer" :title="viewModel.ApplicationInformation.Name" :window="viewModel.Window">
     </top-menu>
 
     <modal v-model="modal" :viewModel="viewModel.Modal">
     </modal>
 
-    <side-menu v-model="drawer" :items="menu">
-    </side-menu>
+
 
     <transition mode="out-in">
       <router-view :viewModel="viewModel.CurrentViewModel"></router-view>
