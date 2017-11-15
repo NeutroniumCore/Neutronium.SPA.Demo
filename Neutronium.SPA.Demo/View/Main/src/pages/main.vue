@@ -16,10 +16,10 @@
             </v-layout>
           </v-slide-y-transition>
 
-        <text-button :command="viewModel.GoToAbout" text="{{ $t("message.GoToAboutSection") }}">
+        <text-button :command="viewModel.GoToAbout" :text="$t('Resource.GoToAboutSection')">
         </text-button>
 
-        <text-button :command="viewModel.Restart" text="{{ $t("message.Restart") }}" color="error">
+        <text-button :command="viewModel.Restart" :text="$t('Resource.Restart')" color="error">
         </text-button>
 
         </v-container>

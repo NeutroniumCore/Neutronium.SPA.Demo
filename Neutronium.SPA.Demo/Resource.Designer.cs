@@ -106,6 +106,15 @@ namespace Neutronium.SPA.Demo {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Neutronium Vue SPA Template including IoC, routing and internalization.
+        /// </summary>
+        internal static string ProjectDescription {
+            get {
+                return ResourceManager.GetString("ProjectDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Restart.
         /// </summary>
         internal static string Restart {

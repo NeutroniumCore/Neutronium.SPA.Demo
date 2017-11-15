@@ -132,6 +132,9 @@
   <data name="Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
+  <data name="ProjectDescription" xml:space="preserve">
+    <value>Neutronium Vue SPA Template including IoC, routing and internalization</value>
+  </data>
   <data name="Restart" xml:space="preserve">
     <value>Restart</value>
   </data>

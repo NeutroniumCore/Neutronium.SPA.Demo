@@ -227,13 +227,13 @@
     <None Include="View\Main\src\components\iconButton.vue" />
     <None Include="View\Main\src\components\sideMenu.vue" />
     <None Include="View\Main\src\components\topMenu.vue" />
+    <None Include="View\Main\src\message.json">
+      <DependentUpon>message.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </None>
     <None Include="View\Main\src\pages\about.vue" />
     <None Include="View\Main\src\pages\main.vue" />
-    <None Include="View\Main\src\message.json">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>message.tt</DependentUpon>
-    </None>
     <None Include="View\Main\src\stylus\main.styl" />
     <None Include="View\Main\src\stylus\theme.styl" />
     <Resource Include="View\Main\dist\styles.css.map" />
