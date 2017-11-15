@@ -1,0 +1,13 @@
+﻿
+{
+ "en-US":{
+        "Resource":{
+            "Cancel":"Cancel",
+            "ConfirmationNeeded":"Confirmation needed",
+            "DoYouWantToRestartApplication":"Do you want to restart application?",
+            "GoToAboutSection":"Go To About Section",
+            "Ok":"Ok",
+            "Restart":"Restart"
+        }
+    }
+}

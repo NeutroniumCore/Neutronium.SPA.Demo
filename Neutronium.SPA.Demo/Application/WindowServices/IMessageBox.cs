@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Neutronium.SPA.Demo.WindowServices
+namespace Neutronium.SPA.Demo.Application.WindowServices
 {
     public interface IMessageBox 
     {

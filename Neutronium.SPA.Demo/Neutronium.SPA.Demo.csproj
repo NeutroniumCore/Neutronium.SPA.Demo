@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
   <Import Project="..\packages\Neutronium.JavascriptFramework.Vue.1.0.0\build\Neutronium.JavascriptFramework.Vue.props" Condition="Exists('..\packages\Neutronium.JavascriptFramework.Vue.1.0.0\build\Neutronium.JavascriptFramework.Vue.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -151,10 +154,15 @@
     <Compile Include="Application\Navigation\RouterBuilderExtensions.cs" />
     <Compile Include="Application\Navigation\RoutingEventArgs.cs" />
     <Compile Include="App_Start\IDependencyInjectionConfiguration.cs" />
-    <Compile Include="WindowServices\IMessageBox.cs" />
-    <Compile Include="WindowServices\ConfirmationMessage.cs" />
+    <Compile Include="Application\WindowServices\IMessageBox.cs" />
+    <Compile Include="Application\WindowServices\ConfirmationMessage.cs" />
+    <Compile Include="Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\Modal\MainModalViewModel.cs" />
-    <Compile Include="WindowServices\MessageInformation.cs" />
+    <Compile Include="Application\WindowServices\MessageInformation.cs" />
     <Compile Include="ViewModel\Modal\MessageModalViewModel.cs" />
     <Compile Include="ViewModel\Pages\AboutModel.cs" />
     <Compile Include="ViewModel\Pages\MainViewModel.cs" />
@@ -201,6 +209,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -217,6 +229,11 @@
     <None Include="View\Main\src\components\topMenu.vue" />
     <None Include="View\Main\src\pages\about.vue" />
     <None Include="View\Main\src\pages\main.vue" />
+    <None Include="View\Main\src\message.json">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>message.tt</DependentUpon>
+    </None>
     <None Include="View\Main\src\stylus\main.styl" />
     <None Include="View\Main\src\stylus\theme.styl" />
     <Resource Include="View\Main\dist\styles.css.map" />
@@ -253,11 +270,17 @@
     <Content Include="View\Main\src\entry.js" />
     <Content Include="View\Main\src\install.js" />
     <Content Include="View\Main\src\main.js" />
+    <Content Include="View\Main\src\message.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>message.json</LastGenOutput>
+    </Content>
     <Content Include="View\Main\src\route.js" />
     <Content Include="View\Main\utils.js" />
     <Content Include="View\Main\webpack.config.js" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -269,6 +292,11 @@
   </Target>
   <Import Project="..\packages\Unofficial.Cef.for.Chromiumfx.3.2924.0\build\Unofficial.Cef.for.Chromiumfx.targets" Condition="Exists('..\packages\Unofficial.Cef.for.Chromiumfx.3.2924.0\build\Unofficial.Cef.for.Chromiumfx.targets')" />
   <Import Project="..\packages\Unofficial.Chromiumfx.3.2924.3\build\Unofficial.Chromiumfx.targets" Condition="Exists('..\packages\Unofficial.Chromiumfx.3.2924.3\build\Unofficial.Chromiumfx.targets')" />
+  <Import Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="'$(SQLDBExtensionsRefPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="'$(SQLDBExtensionsRefPath)' == ''" />
+  <PropertyGroup>
+    <SsdtUnitTestVersion>2.0</SsdtUnitTestVersion>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

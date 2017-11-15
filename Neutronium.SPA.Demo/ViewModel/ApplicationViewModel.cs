@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Neutronium.SPA.Demo.Application.Navigation;
+using Neutronium.SPA.Demo.Application.WindowServices;
 using Neutronium.SPA.Demo.ViewModel.Modal;
-using Neutronium.SPA.Demo.WindowServices;
 using Neutronium.WPF.ViewModel;
 using Vm.Tools.Application;
 

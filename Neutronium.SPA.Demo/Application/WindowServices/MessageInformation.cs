@@ -1,4 +1,4 @@
-﻿namespace Neutronium.SPA.Demo.WindowServices
+﻿namespace Neutronium.SPA.Demo.Application.WindowServices
 {
     public class MessageInformation
     {
@@ -10,7 +10,7 @@
         {
             Title = title;
             Message = message;
-            OkMessage = "Ok";
+            OkMessage = Resource.Ok;
         }
 
         public MessageInformation(string title, string message, string okMessage)

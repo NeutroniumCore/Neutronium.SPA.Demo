@@ -3660,6 +3660,11 @@
       "from": "vue-hot-reload-api@>=2.2.0 <3.0.0",
       "resolved": "https://registry.npmjs.org/vue-hot-reload-api/-/vue-hot-reload-api-2.2.0.tgz"
     },
+    "vue-i18n": {
+      "version": "7.3.2",
+      "from": "vue-i18n@latest",
+      "resolved": "https://registry.npmjs.org/vue-i18n/-/vue-i18n-7.3.2.tgz"
+    },
     "vue-loader": {
       "version": "13.4.0",
       "from": "vue-loader@>=13.3.0 <14.0.0",

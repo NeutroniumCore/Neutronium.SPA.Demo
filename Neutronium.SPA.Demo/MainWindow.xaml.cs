@@ -1,8 +1,8 @@
 ﻿using System;
 using Neutronium.SPA.Demo.Application.Navigation;
+using Neutronium.SPA.Demo.Application.WindowServices;
 using Neutronium.SPA.Demo.ViewModel;
 using Neutronium.SPA.Demo.ViewModel.Pages;
-using Neutronium.SPA.Demo.WindowServices;
 using Neutronium.WPF.ViewModel;
 
 namespace Neutronium.SPA.Demo 
