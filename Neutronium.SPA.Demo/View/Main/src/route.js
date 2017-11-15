@@ -22,7 +22,7 @@ const router = new Router({
 });
 
 const menu = routeDefinitions.filter(r => r.menu).map( ({name, menu}) => ({
-    title: `${name}`,
+    title: `Resource.Menu_${name}`,
     to: {name},
     icon: menu.icon
 }))

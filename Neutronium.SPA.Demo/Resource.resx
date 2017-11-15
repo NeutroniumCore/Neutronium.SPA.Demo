@@ -129,6 +129,12 @@
   <data name="GoToAboutSection" xml:space="preserve">
     <value>Go To About Section</value>
   </data>
+  <data name="Menu_about" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Menu_main" xml:space="preserve">
+    <value>Main</value>
+  </data>
   <data name="Ok" xml:space="preserve">
     <value>Ok</value>
   </data>

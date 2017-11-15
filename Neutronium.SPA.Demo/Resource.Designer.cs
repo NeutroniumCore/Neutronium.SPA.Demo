@@ -97,6 +97,24 @@ namespace Neutronium.SPA.Demo {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        internal static string Menu_about {
+            get {
+                return ResourceManager.GetString("Menu_about", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main.
+        /// </summary>
+        internal static string Menu_main {
+            get {
+                return ResourceManager.GetString("Menu_main", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ok.
         /// </summary>
         internal static string Ok {
