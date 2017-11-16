@@ -12,7 +12,6 @@ namespace Neutronium.SPA.Demo.ViewModel.Modal
 
         public ISimpleCommand OkCommand { get; }
 
-
         public MessageModalViewModel(MessageInformation messageInformation)
         {
             Title = messageInformation.Title;

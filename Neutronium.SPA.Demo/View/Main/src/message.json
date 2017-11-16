@@ -4,8 +4,10 @@
         "Resource":{
             "Cancel":"Cancel",
             "ConfirmationNeeded":"Confirmation needed",
+            "DoYouWantToCloseApplication":"Do you want to close application?",
             "DoYouWantToRestartApplication":"Do you want to restart application?",
             "GoToAboutSection":"Go To About Section",
+            "MadeBy":"made by",
             "Menu_about":"About",
             "Menu_main":"Main",
             "Ok":"Ok",

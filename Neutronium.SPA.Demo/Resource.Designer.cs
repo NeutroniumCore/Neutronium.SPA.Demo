@@ -61,6 +61,33 @@ namespace Neutronium.SPA.Demo {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Complete Neutronium Vue Demo.
+        /// </summary>
+        internal static string About1 {
+            get {
+                return ResourceManager.GetString("About1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Including Ioc, navigation (vue-router) and internalization (vue-i18n).
+        /// </summary>
+        internal static string About2 {
+            get {
+                return ResourceManager.GetString("About2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Made with vuetify framework.
+        /// </summary>
+        internal static string About3 {
+            get {
+                return ResourceManager.GetString("About3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string Cancel {
@@ -102,6 +129,15 @@ namespace Neutronium.SPA.Demo {
         internal static string GoToAboutSection {
             get {
                 return ResourceManager.GetString("GoToAboutSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to made by.
+        /// </summary>
+        internal static string MadeBy {
+            get {
+                return ResourceManager.GetString("MadeBy", resourceCulture);
             }
         }
         

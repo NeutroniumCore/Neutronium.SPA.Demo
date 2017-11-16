@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import rawVm from '../data/vm'
+import rawVm from '../data/vm2'
 import CircularJson from 'circular-json'
 import {install, vueInstanceOption} from './install'
 

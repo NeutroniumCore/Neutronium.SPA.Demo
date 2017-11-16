@@ -7,13 +7,15 @@
                 </v-card-media>
                 <v-card-title primary-title>
                 <div>
-                    <h3 class="headline mb-0">{{ $t("Resource.ProjectDescription") }}</h3>
-                    <div>Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...</div>
+                    <h3 class="headline mb-0">{{viewModel.Information.Name}} {{$t("Resource.MadeBy")}} {{viewModel.Information.MadeBy}}</h3>
+                    <h3 class="headline mb-1">v {{viewModel.Information.Version}}</h3>
+                    <div v-html="completeDescription"></div>
                 </div>
                 </v-card-title>
                 <v-card-actions>
-                <v-btn flat color="orange">Share</v-btn>
-                <v-btn flat color="orange">Explore</v-btn>
+                    <v-btn flat color="orange" href="https://vuejs.org" target="_blank">Vue.js</v-btn>
+                    <v-btn flat color="orange" href="https://vuetifyjs.com/" target="_blank">Vuetify</v-btn>
+                    <v-btn flat color="orange" href="https://github.com/NeutroniumCore/Neutronium/" target="_blank">Neutronium</v-btn>
                 </v-card-actions>
             </v-card>
             </v-flex>
@@ -27,7 +29,12 @@ const props={
 }
 
 export default {
-  props
+  props,
+  computed:{
+      completeDescription(){
+          return this.viewModel.Descriptions.join('<br>')
+      }
+  }
 }
 </script>
 

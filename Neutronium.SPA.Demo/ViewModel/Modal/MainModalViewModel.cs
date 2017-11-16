@@ -10,13 +10,10 @@ namespace Neutronium.SPA.Demo.ViewModel.Modal
     {
         public string CancelMessage { get; }
 
-        [Bindable(false)]
-        public bool? Result { get; set; }
+        public ISimpleCommand CancelCommand { get; }
 
         [Bindable(false)]
         public Task<bool> CompletionTask => _TaskCompletionSource.Task;
-
-        public ISimpleCommand CancelCommand { get; }
 
         private readonly TaskCompletionSource<bool> _TaskCompletionSource = new TaskCompletionSource<bool>();
 
@@ -30,10 +27,9 @@ namespace Neutronium.SPA.Demo.ViewModel.Modal
 
         private void Cancel() => SetResult(false);
 
-        private void SetResult(bool value) 
+        private void SetResult(bool value)
         {
-            if (_TaskCompletionSource.TrySetResult(value))
-                Result = value;
+            _TaskCompletionSource.TrySetResult(value);
         }
     }
 }
