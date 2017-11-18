@@ -224,6 +224,8 @@
     </None>
     <AppDesigner Include="Properties\" />
     <None Include="View\Main\.babelrc" />
+    <None Include="View\Main\data\about\vm.cjson" />
+    <None Include="View\Main\data\main\vm.cjson" />
     <None Include="View\Main\data\vm.cjson" />
     <None Include="View\Main\src\components\applicationFooter.vue" />
     <None Include="View\Main\src\components\iconButton.vue" />

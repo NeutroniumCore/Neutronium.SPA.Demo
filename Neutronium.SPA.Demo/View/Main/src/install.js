@@ -51,7 +51,7 @@ function install(Vue) {
 
 function vueInstanceOption() {
     const i18n = new VueI18n({
-        locale: 'fr-FR', // set locale
+        locale: 'en-US', // set locale
         messages // set locale messages
     });
 

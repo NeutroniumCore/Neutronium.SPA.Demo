@@ -16,7 +16,25 @@ function updateVm(vm) {
 const vm = updateVm(CircularJson.parse(rawVm));
 
 install(Vue)
-const vueRootInstanceOption = Object.assign({}, vueInstanceOption() || {}, {
+
+var options = vueInstanceOption();
+const {router} = options;
+router.beforeEach((to, from, next) => {
+    const name = to.name;
+    console.log(name);
+    import(`../data/${name}/vm.cjson`).then(module => {
+        const newVm = updateVm(CircularJson.parse(module));
+        router.app.ViewModel.CurrentViewModel = newVm.ViewModel.CurrentViewModel;
+        next();
+    }).catch(error => {
+        console.log(error)
+        console.log(`Problem loading file: "../data/${name}/vm.cjson" viewModel will be set to null.`)
+        router.app.ViewModel.CurrentViewModel = null;
+        next();
+    })
+})
+
+const vueRootInstanceOption = Object.assign({}, options, {
     components: {
         App
     },

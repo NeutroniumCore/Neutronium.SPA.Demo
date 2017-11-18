@@ -10,8 +10,6 @@
     <modal v-model="modal" :viewModel="viewModel.Modal">
     </modal>
 
-
-
     <transition mode="out-in">
       <router-view :viewModel="viewModel.CurrentViewModel"></router-view>
     </transition>
@@ -59,7 +57,8 @@ export default {
   },
   watch:{
     'viewModel.Router.Route': function(name){
-      this.$router.push({name});
+      if (name)
+        this.$router.push({name});
     },
     'viewModel.Modal': function(value){
       this.modal = (value!= null)
