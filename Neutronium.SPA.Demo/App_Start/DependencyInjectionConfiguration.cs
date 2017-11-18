@@ -3,6 +3,7 @@ using CommonServiceLocator.NinjectAdapter.Unofficial;
 using Microsoft.Practices.ServiceLocation;
 using Neutronium.Core.WebBrowserEngine.Window;
 using Neutronium.SPA.Demo.Application.LifeCycleHook;
+using Neutronium.SPA.Demo.ViewModel.Pages;
 using Neutronium.WPF.Internal;
 using Ninject;
 using Vm.Tools.Application;
@@ -33,6 +34,7 @@ namespace Neutronium.SPA.Demo
             kernel.Bind<IApplication>().ToConstant(application);
             kernel.Bind<IDispatcher>().ToConstant(new WPFUIDispatcher(window.Dispatcher));
             kernel.Bind<IApplicationLifeCycle>().To<ApplicationLifeCycle>();
+            kernel.Bind<MainViewModel>().ToSelf().InSingletonScope();
         }
     }
 }

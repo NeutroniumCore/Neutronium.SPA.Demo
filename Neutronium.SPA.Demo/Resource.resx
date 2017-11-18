@@ -129,6 +129,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Completed</value>
+  </data>
   <data name="ConfirmationNeeded" xml:space="preserve">
     <value>Confirmation needed</value>
   </data>
@@ -158,5 +161,11 @@
   </data>
   <data name="Restart" xml:space="preserve">
     <value>Restart</value>
+  </data>
+  <data name="ToDoList" xml:space="preserve">
+    <value>ToDo List</value>
+  </data>
+  <data name="WhatNeedsToBeDone" xml:space="preserve">
+    <value>What needs to be done?</value>
   </data>
 </root>

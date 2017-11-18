@@ -10,6 +10,8 @@ import messages from  './message'
 import {
     Vuetify,
     VApp,
+    VCheckBox,
+    VDivider,
     VNavigationDrawer,
     VFooter,
     VList,
@@ -19,6 +21,7 @@ import {
     VToolbar,
     VCard,
     VDialog,
+    VTextField,
     transitions
   } from 'vuetify'
 
@@ -26,6 +29,8 @@ function install(Vue) {
     Vue.use(Vuetify, {
         components: {
           VApp,
+          VCheckBox,
+          VDivider,
           VNavigationDrawer,
           VFooter,
           VList,
@@ -35,6 +40,7 @@ function install(Vue) {
           VToolbar,
           VCard,
           VDialog,
+          VTextField,
           transitions
         }
     })

@@ -97,6 +97,15 @@ namespace Neutronium.SPA.Demo {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Completed.
+        /// </summary>
+        internal static string Completed {
+            get {
+                return ResourceManager.GetString("Completed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirmation needed.
         /// </summary>
         internal static string ConfirmationNeeded {
@@ -183,6 +192,24 @@ namespace Neutronium.SPA.Demo {
         internal static string Restart {
             get {
                 return ResourceManager.GetString("Restart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ToDo List.
+        /// </summary>
+        internal static string ToDoList {
+            get {
+                return ResourceManager.GetString("ToDoList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What needs to be done?.
+        /// </summary>
+        internal static string WhatNeedsToBeDone {
+            get {
+                return ResourceManager.GetString("WhatNeedsToBeDone", resourceCulture);
             }
         }
     }

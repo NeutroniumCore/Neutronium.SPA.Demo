@@ -2,7 +2,11 @@
 {
  "en-US":{
         "Resource":{
+            "About1":"Complete Neutronium Vue Demo",
+            "About2":"Including Ioc, navigation (vue-router) and internalization (vue-i18n)",
+            "About3":"Made with vuetify framework",
             "Cancel":"Cancel",
+            "Completed":"Completed",
             "ConfirmationNeeded":"Confirmation needed",
             "DoYouWantToCloseApplication":"Do you want to close application?",
             "DoYouWantToRestartApplication":"Do you want to restart application?",
@@ -12,7 +16,9 @@
             "Menu_main":"Main",
             "Ok":"Ok",
             "ProjectDescription":"Neutronium Vue SPA Template including IoC, routing and internalization",
-            "Restart":"Restart"
+            "Restart":"Restart",
+            "ToDoList":"ToDo List",
+            "WhatNeedsToBeDone":"What needs to be done?"
         }
     }
 }

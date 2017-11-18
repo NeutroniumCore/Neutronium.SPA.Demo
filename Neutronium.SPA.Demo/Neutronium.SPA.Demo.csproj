@@ -167,6 +167,7 @@
     <Compile Include="Application\WindowServices\MessageInformation.cs" />
     <Compile Include="ViewModel\Modal\MessageModalViewModel.cs" />
     <Compile Include="ViewModel\Pages\AboutModel.cs" />
+    <Compile Include="ViewModel\Pages\ItemViewModel.cs" />
     <Compile Include="ViewModel\Pages\MainViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
