@@ -196,6 +196,15 @@ namespace Neutronium.SPA.Demo {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To Do.
+        /// </summary>
+        internal static string ToDo {
+            get {
+                return ResourceManager.GetString("ToDo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ToDo List.
         /// </summary>
         internal static string ToDoList {

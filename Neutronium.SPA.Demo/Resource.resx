@@ -162,6 +162,9 @@
   <data name="Restart" xml:space="preserve">
     <value>Restart</value>
   </data>
+  <data name="ToDo" xml:space="preserve">
+    <value>To Do</value>
+  </data>
   <data name="ToDoList" xml:space="preserve">
     <value>ToDo List</value>
   </data>

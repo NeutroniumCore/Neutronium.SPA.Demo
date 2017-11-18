@@ -9,23 +9,25 @@
               <v-toolbar color="blue" dark>
                 <v-toolbar-title>{{$t('Resource.ToDoList')}}</v-toolbar-title>
               </v-toolbar>
-              <v-list two-line>
-                <template v-for="item in viewModel.Items">
-                  <v-list-tile :key="item.Id">
-                    <v-list-tile-content>
-                      <v-list-tile-title>
-                      <span class="grey--text">{{item.Name}}</span>
-                      </v-list-tile-title>
-                      <v-list-tile-sub-title>
-                        <v-checkbox v-model="item.Done" :label="$t('Resource.Completed')" light></v-checkbox>
-                      </v-list-tile-sub-title>
-                    </v-list-tile-content>
-                    <v-list-tile-action>
-                      <icon-button :command="viewModel.RemoveItem" :arg="item" icon="fa-trash"></icon-button>
-                    </v-list-tile-action>
-                  </v-list-tile>
-                  <v-divider :key="item.Id"></v-divider>
-                </template>
+              <v-list two-line transition="slide-y-transition">
+                <transition-group name="slide-y-transition">
+                  <template v-for="item in viewModel.Items">
+                    <v-list-tile :key="item.Id">
+                      <v-list-tile-content>
+                        <v-list-tile-title>
+                        <span class="grey--text">{{item.Name}}</span>
+                        </v-list-tile-title>
+                        <v-list-tile-sub-title>
+                          <v-checkbox v-model="item.Done" :label="item.Done? $t('Resource.Completed') : $t('Resource.ToDo')" light></v-checkbox>
+                        </v-list-tile-sub-title>
+                      </v-list-tile-content>
+                      <v-list-tile-action>
+                        <icon-button :command="viewModel.RemoveItem" :arg="item" icon="fa-trash"></icon-button>
+                      </v-list-tile-action>
+                    </v-list-tile>
+                    <v-divider :key="item.Id"></v-divider>
+                  </template>
+                </transition-group>
               </v-list>
 
                <v-toolbar color="red" dark>
