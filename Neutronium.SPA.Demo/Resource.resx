@@ -121,7 +121,7 @@
     <value>Complete Neutronium Vue Demo</value>
   </data>
   <data name="About2" xml:space="preserve">
-    <value>Including Ioc, navigation (vue-router) and internalization (vue-i18n)</value>
+    <value>Including Ioc, navigation (vue-router) internalization (vue-i18n) and chromeless window</value>
   </data>
   <data name="About3" xml:space="preserve">
     <value>Made with vuetify framework</value>

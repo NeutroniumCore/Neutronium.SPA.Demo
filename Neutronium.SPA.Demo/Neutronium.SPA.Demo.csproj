@@ -167,7 +167,7 @@
     <Compile Include="Application\WindowServices\MessageInformation.cs" />
     <Compile Include="ViewModel\Modal\MessageModalViewModel.cs" />
     <Compile Include="ViewModel\Pages\AboutModel.cs" />
-    <Compile Include="ViewModel\Pages\ItemViewModel.cs" />
+    <Compile Include="ViewModel\BuildingBlock\ItemViewModel.cs" />
     <Compile Include="ViewModel\Pages\MainViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -229,7 +229,9 @@
     <None Include="View\Main\data\vm.cjson" />
     <None Include="View\Main\src\components\applicationFooter.vue" />
     <None Include="View\Main\src\components\iconButton.vue" />
+    <None Include="View\Main\src\components\modal.vue" />
     <None Include="View\Main\src\components\sideMenu.vue" />
+    <None Include="View\Main\src\components\textButton.vue" />
     <None Include="View\Main\src\components\topMenu.vue" />
     <None Include="View\Main\src\message.json">
       <DependentUpon>message.tt</DependentUpon>
@@ -279,6 +281,7 @@
       <LastGenOutput>message.json</LastGenOutput>
     </Content>
     <Content Include="View\Main\src\route.js" />
+    <Content Include="View\Main\src\routeDefinitions.js" />
     <Content Include="View\Main\utils.js" />
     <Content Include="View\Main\webpack.config.js" />
   </ItemGroup>

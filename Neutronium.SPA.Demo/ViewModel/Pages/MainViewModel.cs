@@ -5,6 +5,7 @@ using Neutronium.SPA.Demo.Application.WindowServices;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Neutronium.SPA.Demo.ViewModel.BuildingBlock;
 using Vm.Tools.Application;
 
 namespace Neutronium.SPA.Demo.ViewModel.Pages 

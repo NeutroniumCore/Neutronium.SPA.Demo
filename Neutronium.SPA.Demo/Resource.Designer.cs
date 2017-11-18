@@ -70,7 +70,7 @@ namespace Neutronium.SPA.Demo {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Including Ioc, navigation (vue-router) and internalization (vue-i18n).
+        ///   Looks up a localized string similar to Including Ioc, navigation (vue-router) internalization (vue-i18n) and chromeless window.
         /// </summary>
         internal static string About2 {
             get {

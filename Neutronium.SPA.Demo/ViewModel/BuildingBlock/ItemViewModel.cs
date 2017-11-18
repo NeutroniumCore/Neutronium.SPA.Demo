@@ -1,4 +1,4 @@
-﻿namespace Neutronium.SPA.Demo.ViewModel.Pages
+﻿namespace Neutronium.SPA.Demo.ViewModel.BuildingBlock
 {
     public class ItemViewModel : Vm.Tools.ViewModel
     {
