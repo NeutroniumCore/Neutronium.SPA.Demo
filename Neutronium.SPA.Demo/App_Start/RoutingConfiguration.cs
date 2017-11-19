@@ -1,6 +1,5 @@
 ﻿using Neutronium.Core.Navigation.Routing;
 using Neutronium.SPA.Demo.Application.Navigation;
-using Neutronium.SPA.Demo.ViewModel;
 
 namespace Neutronium.SPA.Demo
 {

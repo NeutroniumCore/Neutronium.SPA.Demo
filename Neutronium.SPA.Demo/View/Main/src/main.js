@@ -21,14 +21,14 @@ var options = vueInstanceOption();
 const {router} = options;
 router.beforeEach((to, from, next) => {
     const name = to.name;
-    console.log(name);
-    import(`../data/${name}/vm.cjson`).then(module => {
+    const vmFile = `../data/${name}/vm.cjson`
+    import(vmFile).then(module => {
         const newVm = updateVm(CircularJson.parse(module));
         router.app.ViewModel.CurrentViewModel = newVm.ViewModel.CurrentViewModel;
         next();
     }).catch(error => {
         console.log(error)
-        console.log(`Problem loading file: "../data/${name}/vm.cjson" viewModel will be set to null.`)
+        console.log(`Problem loading file: "${vmFile}". Please create corresponding file to be abble to . ViewModel will be set to null.`)
         router.app.ViewModel.CurrentViewModel = null;
         next();
     })
