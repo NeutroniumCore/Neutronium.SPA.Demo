@@ -77,15 +77,13 @@ Integration with [vue-i18n](https://kazupon.github.io/vue-i18n/en/) is provided.
 
 ## Screenshots
 
-<img src="./Screenshots/Screenshot1.png" height="250px"><br>
+<img src="./Screenshots/Screenshot1.png"><br>
 
-<img src="./Screenshots/Screenshot2.png" height="250px"><br>
+<img src="./Screenshots/Screenshot2.png"><br>
 
-<img src="./Screenshots/Screenshot3.png" height="250px"><br>
+<img src="./Screenshots/Screenshot3.png"><br>
 
-<img src="./Screenshots/Screenshot4.png" height="250px"><br>
-
-<img src="./Screenshots/Screenshot5.png" height="250px"><br>
+<img src="./Screenshots/Screenshot5.png"><br>
 
 
 ## Built with
