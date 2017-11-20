@@ -147,7 +147,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Application\LifeCycleHook\ApplicationLifeCycle.cs" />
+    <Compile Include="App_Start\ApplicationLifeCycle.cs" />
     <Compile Include="Application\LifeCycleHook\IApplicationLifeCycle.cs" />
     <Compile Include="Application\Navigation\BeforeRouterResult.cs" />
     <Compile Include="Application\Navigation\ConventionRouter.cs" />

@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel;
+using Neutronium.SPA.Demo.Application.LifeCycleHook;
 using Neutronium.SPA.Demo.Application.Navigation;
 using Neutronium.SPA.Demo.Application.WindowServices;
 using Vm.Tools.Application;
 
-namespace Neutronium.SPA.Demo.Application.LifeCycleHook
+namespace Neutronium.SPA.Demo
 {
     public class ApplicationLifeCycle: IApplicationLifeCycle
     {
