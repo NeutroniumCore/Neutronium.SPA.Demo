@@ -27,6 +27,17 @@ See more details [here](./Documentation/Routing.md)
 Integration with [vue-i18n](https://kazupon.github.io/vue-i18n/en/) is provided.
 
 
+Resource.resx is used on the C# side and transformed by [message.tt](./Neutronium.SPA.Demo/View/Main/src/message.tt) into a `.json` file that is used by `vue-i18n` as resource.<br>
+
+For example, to reference `About1` key defined as below:
+<img src="./Screenshots/resource.png"><br>
+
+Just do:
+
+```HTML
+<v-list-tile-title v-text="$t('Resource.About1')"></v-list-tile-title>
+```
+
 
 ## Screenshots
 
