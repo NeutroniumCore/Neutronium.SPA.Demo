@@ -40,7 +40,7 @@ Just do:
 
 ## Chromeless Window
 
-To render a chromeless window, with full behaviour Neutronium.SPA.Demo uses a combination of Neutronium built in chromeless behavior on the main window:
+To render a chromeless window, with full behavior Neutronium.SPA.Demo uses Neutronium built in chromeless behavior on the main window to set-up WPF behavior.
 
 ```XML
  <xmlns:WPF="clr-namespace:Neutronium.WPF;assembly=Neutronium.WPF" x:Class="Neutronium.SPA.Demo.MainWindow"
@@ -51,7 +51,7 @@ To render a chromeless window, with full behaviour Neutronium.SPA.Demo uses a co
         <WPF:Chromeless />
     </i:Interaction.Behaviors>
 ```
-Usage of [`-webkit-app-region` CSS property](https://developer.chrome.com/apps/app_window):
+Use [`-webkit-app-region` CSS property](https://developer.chrome.com/apps/app_window) to define draggable zone on the HTML window:
 
 ```CSS
 #top-menu > div{
@@ -61,6 +61,23 @@ Usage of [`-webkit-app-region` CSS property](https://developer.chrome.com/apps/a
 #top-menu > div > button{
   -webkit-app-region: no-drag;
 }
+```
+
+And finally a dedicated Vue.js component: [topMenu.vue](./Neutronium.SPA.Demo/View/Main/src/components/topMenu.vue) bound to a WindowViewModel to allow to minimize/maximize/close the corresponding window.
+
+```HTML
+<v-toolbar id="top-menu"  app >
+
+    <icon-button :command="window.Minimize" icon="remove">
+    </icon-button>
+
+    <icon-button :command="window.Normalize" :icon="middleIcon">
+    </icon-button>
+
+    <icon-button :command="window.Close" icon="close">
+    </icon-button>
+
+</v-toolbar>
 ```
 
 ## Screenshots
