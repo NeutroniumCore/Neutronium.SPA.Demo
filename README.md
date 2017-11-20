@@ -40,8 +40,7 @@ Just do:
 
 ## Chromeless Window
 
-
-Neutronium.SPA.Demo uses a combination of Neutronium built in chromeless behavior on the main window:
+To render a chromeless window, with full behaviour Neutronium.SPA.Demo uses a combination of Neutronium built in chromeless behavior on the main window:
 
 ```XML
  <xmlns:WPF="clr-namespace:Neutronium.WPF;assembly=Neutronium.WPF" x:Class="Neutronium.SPA.Demo.MainWindow"
@@ -62,6 +61,7 @@ Usage of [`-webkit-app-region` CSS property](https://developer.chrome.com/apps/a
 #top-menu > div > button{
   -webkit-app-region: no-drag;
 }
+```
 
 ## Screenshots
 
