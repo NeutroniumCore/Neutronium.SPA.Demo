@@ -38,6 +38,30 @@ Just do:
 <v-list-tile-title v-text="$t('Resource.About1')"></v-list-tile-title>
 ```
 
+## Chromeless Window
+
+
+Neutronium.SPA.Demo uses a combination of Neutronium built in chromeless behavior on the main window:
+
+```XML
+ <xmlns:WPF="clr-namespace:Neutronium.WPF;assembly=Neutronium.WPF" x:Class="Neutronium.SPA.Demo.MainWindow"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        BorderThickness="1"
+        Title="MainWindow">
+    <i:Interaction.Behaviors>
+        <WPF:Chromeless />
+    </i:Interaction.Behaviors>
+```
+Usage of [`-webkit-app-region` CSS property](https://developer.chrome.com/apps/app_window):
+
+```CSS
+#top-menu > div{
+  -webkit-app-region: drag;
+}
+
+#top-menu > div > button{
+  -webkit-app-region: no-drag;
+}
 
 ## Screenshots
 
