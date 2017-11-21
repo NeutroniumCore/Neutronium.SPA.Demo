@@ -48,7 +48,7 @@ It is possible to use router-link to navigate to a given route providing its nam
 
 ## On the C# side
 
-Navigation API provided in the `Neutronium.SPA.Demo.Application.Navigation` namespace allows to associate ViewModel type to specific route via the [`IRouterBuilder`](./Neutronium.SPA.Demo/Application/Navigation/IRouterBuilder.cs) interface.
+Navigation API provided in the `Neutronium.SPA.Demo.Application.Navigation` namespace allows to associate ViewModel type to specific route via the [`IRouterBuilder`](../Neutronium.SPA.Demo/Application/Navigation/IRouterBuilder.cs) interface.
 ```cSharp
 public interface IRouterBuilder
 {
@@ -92,7 +92,7 @@ public interface IRouterBuilder
 
 It is possible to register route manually but you can also use convention to avoid repetitive code see below `RoutingConfiguration`.
 
-This information is used by [`INavigator`]((./Neutronium.SPA.Demo/Application/Navigation/INavigator.cs)) interface implementation that allows to programmatically navigate.
+This information is used by [`INavigator`](../Neutronium.SPA.Demo/Application/Navigation/INavigator.cs) interface implementation that allows to programmatically navigate.
 
 ```CSharp
     public interface INavigator
@@ -113,14 +113,14 @@ This information is used by [`INavigator`]((./Neutronium.SPA.Demo/Application/Na
 
 When navigation is done without providing a ViewModel instance, the ViewModel type (given as an argument, or inferred from the route name) is used by dependency injection mechanism to instanciate the corresponding ViewModel.<br>
 
-[RoutingConfiguration](./Neutronium.SPA.Demo/App_start/RoutingConfiguration.cs) defines the convention for navigation: <br>
+[RoutingConfiguration](../Neutronium.SPA.Demo/App_start/RoutingConfiguration.cs) defines the convention for navigation: <br>
  all the types in the `Neutronium.SPA.Demo.ViewModel.Pages` namespace are associated with a route with name is the type without ViewModel postfix:
 
 VM: `AboutViewModel` => route: `about`<br>
 VM: `MainViewModel` => route: `main`
 
 Finally:<br>
-[ApplicationLifeCycle](./Neutronium.SPA.Demo/App_start/ApplicationLifeCycle.cs) is called during navigation on these two methods:
+[ApplicationLifeCycle](../Neutronium.SPA.Demo/App_start/ApplicationLifeCycle.cs) is called during navigation on these two methods:
 
 ```CSharp
   public void OnNavigating(RoutingEventArgs routingEvent)
@@ -128,3 +128,5 @@ Finally:<br>
   public void OnNavigated(RoutedEventArgs routedEvent)
 ```
 This allows application potentially to cancel a navigation or to reroute application.
+
+Back to [README](../README.md)

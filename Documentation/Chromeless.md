@@ -27,7 +27,7 @@ To render a chromeless window, with full behavior Neutronium.SPA.Demo
 }
 ```
 
-3) uses a dedicated Vue.js component: [topMenu.vue](./Neutronium.SPA.Demo/View/Main/src/components/topMenu.vue) bound to a WindowViewModel to allow to minimize/maximize/close the corresponding window.
+3) uses a dedicated Vue.js component: [topMenu.vue](../Neutronium.SPA.Demo/View/Main/src/components/topMenu.vue) bound to a WindowViewModel to allow to minimize/maximize/close the corresponding window.
 
 ```HTML
 <v-toolbar id="top-menu"  app >
@@ -43,3 +43,5 @@ To render a chromeless window, with full behavior Neutronium.SPA.Demo
 
 </v-toolbar>
 ```
+
+Back to [README](../README.md)
