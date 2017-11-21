@@ -16,70 +16,20 @@ It can be used as a starter for building a new solution, or as a reference Neutr
 
 It is built on the top of [Vuetifyjs](https://vuetifyjs.com) material component framework.
 
-
 ## Routing
 
-Neutronium.SPA.Demo illustrates how to integrate with [vue-router](https://router.vuejs.org/en/).
+Neutronium.SPA.Demo illustrates how to integrate with [vue-router](https://router.vuejs.org/en/).<br>
 See more details [here](./Documentation/Routing.md)
 
 ## Internalization
 
-Integration with [vue-i18n](https://kazupon.github.io/vue-i18n/en/) is provided.
-
-
-Resource.resx is used on the C# side and transformed by [message.tt](./Neutronium.SPA.Demo/View/Main/src/message.tt) into a `.json` file that is used by `vue-i18n` as resource.<br>
-
-For example, to reference `About1` key defined as below:
-<img src="./Screenshots/resource.png"><br>
-
-Just do:
-
-```HTML
-<v-list-tile-title v-text="$t('Resource.About1')"></v-list-tile-title>
-```
+Integration with [vue-i18n](https://kazupon.github.io/vue-i18n/en/) is provided.<br>
+See more details [here](./Documentation/Internalization.md)
 
 ## Chromeless Window
 
-To render a chromeless window, with full behavior Neutronium.SPA.Demo 
-1) uses Neutronium built-in chromeless behavior on the main window to set-up WPF behavior.
+See more details [here](./Documentation/Chromeless.md)
 
-```XML
- <xmlns:WPF="clr-namespace:Neutronium.WPF;assembly=Neutronium.WPF" x:Class="Neutronium.SPA.Demo.MainWindow"
-        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-        BorderThickness="1"
-        Title="MainWindow">
-    <i:Interaction.Behaviors>
-        <WPF:Chromeless />
-    </i:Interaction.Behaviors>
-```
-2) uses [`-webkit-app-region` CSS property](https://developer.chrome.com/apps/app_window) to define draggable zone on the HTML window:
-
-```CSS
-#top-menu > div{
-  -webkit-app-region: drag;
-}
-
-#top-menu > div > button{
-  -webkit-app-region: no-drag;
-}
-```
-
-3) uses a dedicated Vue.js component: [topMenu.vue](./Neutronium.SPA.Demo/View/Main/src/components/topMenu.vue) bound to a WindowViewModel to allow to minimize/maximize/close the corresponding window.
-
-```HTML
-<v-toolbar id="top-menu"  app >
-
-    <icon-button :command="window.Minimize" icon="remove">
-    </icon-button>
-
-    <icon-button :command="window.Normalize" :icon="middleIcon">
-    </icon-button>
-
-    <icon-button :command="window.Close" icon="close">
-    </icon-button>
-
-</v-toolbar>
-```
 
 ## Screenshots
 
