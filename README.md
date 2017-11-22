@@ -30,6 +30,9 @@ See more details [here](./Documentation/Internalization.md)
 
 See more details [here](./Documentation/Chromeless.md)
 
+## Developing 
+
+See more details [here](./Documentation/Developing.md)
 
 ## Screenshots
 
