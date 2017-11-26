@@ -1,6 +1,6 @@
 ﻿<#@ template debug="false" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
-<#@ assembly name="$(SolutionDir)\Neutronium.SPA.Demo\bin\x86\Debug\Neutronium SPA Demo.exe" #>
+<#@ assembly name="$(SolutionDir)\Neutronium.SPA.Demo\bin\Debug\Neutronium SPA Demo.exe" #>
 
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Globalization" #>
