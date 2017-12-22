@@ -2235,6 +2235,18 @@
       "from": "negotiator@0.6.1",
       "resolved": "https://registry.npmjs.org/negotiator/-/negotiator-0.6.1.tgz"
     },
+    "neutronium-vm-loader": {
+      "version": "1.1.1",
+      "from": "neutronium-vm-loader@latest",
+      "resolved": "https://registry.npmjs.org/neutronium-vm-loader/-/neutronium-vm-loader-1.1.1.tgz",
+      "dependencies": {
+        "circular-json": {
+          "version": "0.5.1",
+          "from": "circular-json@>=0.5.1 <0.6.0",
+          "resolved": "https://registry.npmjs.org/circular-json/-/circular-json-0.5.1.tgz"
+        }
+      }
+    },
     "neutronium-vue-command-mixin": {
       "version": "1.5.0",
       "from": "neutronium-vue-command-mixin@>=1.4.1 <2.0.0",

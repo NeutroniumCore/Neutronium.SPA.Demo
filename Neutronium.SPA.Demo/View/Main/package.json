@@ -10,6 +10,7 @@
   "dependencies": {
     "font-awesome": "^4.7.0",
     "material-design-icons": "^3.0.1",
+    "neutronium-vm-loader": "^1.1.1",
     "neutronium-vue-command-mixin": "^1.4.1",
     "neutronium-vue-resultcommand-topromise": "^1.1.0",
     "neutronium-vue-simple-command-mixin": "^1.1.0",

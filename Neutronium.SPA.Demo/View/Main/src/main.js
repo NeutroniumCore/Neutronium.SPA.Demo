@@ -1,29 +1,20 @@
 import Vue from 'vue'
 import App from './App.vue'
 import rawVm from '../data/vm'
-import CircularJson from 'circular-json'
-import {install, vueInstanceOption} from './install'
+import { install, vueInstanceOption } from './install'
+import { createVM } from 'neutronium-vm-loader'
 
-function updateVm(vm) {
-    var window = vm.__window__
-    if (window) {
-        delete vm.__window__
-        return { ViewModel: vm, Window: window }
-    }
-    return vm;
-}
-
-const vm = updateVm(CircularJson.parse(rawVm));
+const vm = createVM(rawVm);
 
 install(Vue)
 
 var options = vueInstanceOption();
-const {router} = options;
+const { router } = options;
 router.beforeEach((to, from, next) => {
     const name = to.name;
     const vmFile = `../data/${name}/vm.cjson`
     import(`../data/${name}/vm.cjson`).then(module => {
-        const newVm = updateVm(CircularJson.parse(module));
+        const newVm = createVM(module);
         router.app.ViewModel.CurrentViewModel = newVm.ViewModel.CurrentViewModel;
         next();
     }).catch(error => {
