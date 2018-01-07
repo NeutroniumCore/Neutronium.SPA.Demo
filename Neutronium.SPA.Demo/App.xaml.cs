@@ -17,7 +17,7 @@ namespace Neutronium.SPA.Demo
 
         protected override void OnStartUp(IHTMLEngineFactory factory)
         {
-            factory.RegisterJavaScriptFrameworkAsDefault(new VueSessionInjectorV2());
+            factory.RegisterJavaScriptFrameworkAsDefault(new VueSessionInjectorV2 {RunTimeOnly = true});
             base.OnStartUp(factory);
         }
     }

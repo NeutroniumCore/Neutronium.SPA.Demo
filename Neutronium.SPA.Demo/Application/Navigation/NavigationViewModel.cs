@@ -9,7 +9,7 @@ namespace Neutronium.SPA.Demo.Application.Navigation
 {
     public class NavigationViewModel : Vm.Tools.ViewModel, INavigator
     {
-        public IResultCommand BeforeResolveCommand { get; }
+        public IResultCommand<string, BeforeRouterResult> BeforeResolveCommand { get; }
         public ISimpleCommand<string> AfterResolveCommand { get; }
 
         private string _Route;
