@@ -25,7 +25,7 @@
                         <icon-button :command="viewModel.RemoveItem" :arg="item" icon="fa-trash"></icon-button>
                       </v-list-tile-action>
                     </v-list-tile>
-                    <v-divider :key="item.Id"></v-divider>
+                    <v-divider :key="'_'+item.Id"></v-divider>
                   </template>
                 </transition-group>
               </v-list>
