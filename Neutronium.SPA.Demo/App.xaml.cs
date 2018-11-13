@@ -21,10 +21,5 @@ namespace Neutronium.SPA.Demo
             factory.RegisterJavaScriptFrameworkAsDefault(new VueSessionInjectorV2 {RunTimeOnly = true});
             base.OnStartUp(factory);
         }
-
-        protected override void UpdateLineCommandArg(CfxOnBeforeCommandLineProcessingEventArgs beforeLineCommand)
-        {
-            beforeLineCommand.CommandLine.AppendSwitch("disable-gpu");
-        }
     }
 }
