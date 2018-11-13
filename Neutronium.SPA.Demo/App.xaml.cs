@@ -2,6 +2,7 @@
 using Neutronium.WebBrowserEngine.ChromiumFx;
 using Neutronium.JavascriptFramework.Vue;
 using Neutronium.WPF;
+using Chromium.Event;
 
 namespace Neutronium.SPA.Demo
 {
@@ -19,6 +20,11 @@ namespace Neutronium.SPA.Demo
         {
             factory.RegisterJavaScriptFrameworkAsDefault(new VueSessionInjectorV2 {RunTimeOnly = true});
             base.OnStartUp(factory);
+        }
+
+        protected override void UpdateLineCommandArg(CfxOnBeforeCommandLineProcessingEventArgs beforeLineCommand)
+        {
+            beforeLineCommand.CommandLine.AppendSwitch("disable-gpu");
         }
     }
 }
