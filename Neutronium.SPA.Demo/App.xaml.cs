@@ -6,6 +6,7 @@ using Neutronium.Core.JavascriptFramework;
 using Neutronium.JavascriptFramework.Vue;
 using Neutronium.WebBrowserEngine.ChromiumFx;
 using Neutronium.WPF;
+using Chromium.Event;
 
 namespace Neutronium.SPA.Demo
 {
