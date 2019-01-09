@@ -1,5 +1,5 @@
-﻿using Neutronium.Core.Navigation.Routing;
-using Neutronium.SPA.Demo.Application.Navigation;
+﻿using Neutronium.BuildingBlocks.Application.Navigation;
+using Neutronium.Core.Navigation.Routing;
 
 namespace Neutronium.SPA.Demo
 {
@@ -12,11 +12,11 @@ namespace Neutronium.SPA.Demo
             return router;
         }
 
-        private static void BuildRoutes(IRouterBuilder routeBuilder) 
+        private static void BuildRoutes(IRouterBuilder routeBuilder)
         {
             var convention = routeBuilder.GetTemplateConvention("{vm}");
             typeof(RoutingConfiguration).GetTypesFromSameAssembly()
-                .InNamespace("Neutronium.SPA.Demo.ViewModel.Pages")
+                .InNamespace("Neutronium.SPA.Demo.ViewModel")
                 .Register(convention);
         }
     }

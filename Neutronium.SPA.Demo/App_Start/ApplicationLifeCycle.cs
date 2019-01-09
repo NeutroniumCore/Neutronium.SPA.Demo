@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel;
-using Neutronium.SPA.Demo.Application.LifeCycleHook;
-using Neutronium.SPA.Demo.Application.Navigation;
-using Neutronium.SPA.Demo.Application.WindowServices;
-using Vm.Tools.Application;
+using Neutronium.BuildingBlocks.Application.LifeCycleHook;
+using Neutronium.BuildingBlocks.Application.Navigation;
+using Neutronium.BuildingBlocks.Application.WindowServices;
+using Neutronium.BuildingBlocks.ApplicationTools;
+
 
 namespace Neutronium.SPA.Demo
 {
-    public class ApplicationLifeCycle: IApplicationLifeCycle
+    public class ApplicationLifeCycle : IApplicationLifeCycle
     {
         private readonly IMessageBox _MessageBox;
         private readonly IApplication _Application;
@@ -28,7 +29,7 @@ namespace Neutronium.SPA.Demo
         public async void OnClosing(CancelEventArgs cancelEvent)
         {
             cancelEvent.Cancel = true;
-            var confirmationMessage = new ConfirmationMessage(Resource.ConfirmationNeeded, Resource.DoYouWantToCloseApplication);
+            var confirmationMessage = new ConfirmationMessage(Resource.ConfirmationNeeded, Resource.DoYouWantToCloseApplication, Resource.Ok, Resource.Cancel);
             var close = await _MessageBox.ShowMessage(confirmationMessage);
             if (close)
                 _Application.ForceClose();

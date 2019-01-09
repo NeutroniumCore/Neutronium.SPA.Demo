@@ -6,9 +6,5 @@
              xmlns:wpf="clr-namespace:Neutronium.WPF;assembly=Neutronium.WPF"
              StartupUri="MainWindow.xaml">
     <chromiumFxInfra:ChromiumFxWebBrowserApp.Resources>
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-
-        <wpf:BoolToHiddenConverter x:Key="BoolToHidden"/>
-
     </chromiumFxInfra:ChromiumFxWebBrowserApp.Resources>
 </chromiumFxInfra:ChromiumFxWebBrowserApp>

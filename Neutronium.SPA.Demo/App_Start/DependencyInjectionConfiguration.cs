@@ -1,21 +1,22 @@
 ﻿using System;
-using CommonServiceLocator.NinjectAdapter.Unofficial;
-using Microsoft.Practices.ServiceLocation;
+using CommonServiceLocator;
+using Neutronium.BuildingBlocks.Application.LifeCycleHook;
+using Neutronium.BuildingBlocks.ApplicationTools;
+using Neutronium.BuildingBlocks.Wpf.Application;
 using Neutronium.Core.WebBrowserEngine.Window;
-using Neutronium.SPA.Demo.Application.LifeCycleHook;
-using Neutronium.SPA.Demo.ViewModel.Pages;
+using Neutronium.SPA.Demo.ServiceLocator;
+using Neutronium.SPA.Demo.ViewModel;
 using Neutronium.WPF.Internal;
 using Ninject;
-using Vm.Tools.Application;
 
-namespace Neutronium.SPA.Demo 
+namespace Neutronium.SPA.Demo
 {
-    public class DependencyInjectionConfiguration: IDependencyInjectionConfiguration
+    public class DependencyInjectionConfiguration : IDependencyInjectionConfiguration
     {
         private readonly StandardKernel _Kernel;
         private readonly Lazy<IServiceLocator> _ServiceLocator;
 
-        public DependencyInjectionConfiguration() 
+        public DependencyInjectionConfiguration()
         {
             var kernel = new StandardKernel(new NinjectSettings { UseReflectionBasedInjection = true });
             RegisterDependency(kernel);
@@ -23,7 +24,7 @@ namespace Neutronium.SPA.Demo
             _ServiceLocator = new Lazy<IServiceLocator>(() => new NinjectServiceLocator(_Kernel));
         }
 
-        public IServiceLocator GetServiceLocator() => _ServiceLocator.Value;
+        public Lazy<IServiceLocator> GetServiceLocator() => _ServiceLocator;
 
         public void Register<T>(T implementation) => _Kernel.Bind<T>().ToConstant(implementation);
 
